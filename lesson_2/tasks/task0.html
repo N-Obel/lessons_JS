@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_0</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			p {
+				font-size: 20px;
+			}
+			li {
+				font-size: 18px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body style="max-width: 1200px; margin: 0 auto;">
+	<h1 style="text-align: center; margin-bottom: 40px;">Задача_0</h1>
+	<p>Обчислити значення виразів</p>
+	<ol>
+		<li>S1 = a + 12 + b</li>
+		<li>S2 = √((a + b) / 2a)</li>
+		<li>S3 = √'3(a + b)c</li>
+		<li>S4 = sin(a / -b)</li>
+	</ol>
+
+	<script>
+		//1.Вводимо дані
+		let num1 = parseInt(prompt(`Введіть перше число`, 5))
+		let num2 = parseInt(prompt(`Введіть друге число`, 10))
+		let num3 = parseInt(prompt(`Введіть третє число`, 20))
+
+		//2.Знаходимо результат
+		let result1 = num1 + 12 + num2
+		let result2 = Math.sqrt((num1 + num2) / (2 * num1))
+		let result3 = Math.cbrt((num1 + num2) * num3)
+		let result4 = Math.sin(num1 / -num2)
+		console.log(result4);
+		//3.Виводимо результат
+		document.write(`
+		<ul>
+			<li>s1 = ${result1}</li>
+			<li>s2 = ${result2}</li>
+			<li>s3 = ${result3}</li>
+			<li>s4 = ${result4}</li>
+		</ul>
+		`)
+
+	</script>
+</body>
+
+</html>

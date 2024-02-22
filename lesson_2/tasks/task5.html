@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			p {
+				font-size: 20px;
+			}
+			li {
+				font-size: 18px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Задача_5</h1>
+	<p>Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</p>
+	<script>
+		//1.Вводимо дані
+		let valueSec = parseInt(prompt(`Скільки секунд пройшло від початку доби?`, 180))
+		const secInMinute = 60
+		const secInHour = 3600
+
+		//2.Знаходимо результат
+		let secToHour = Math.floor(valueSec / secInHour)
+		let secToMinute = Math.floor((valueSec % secInHour) / secInMinute)
+		let secTotal = valueSec % secInMinute
+
+		//3.Виводимо результат
+		document.write(`
+			Від початку доби пройшло : ${secToHour} год. ${secToMinute}хв. ${secTotal}сек
+		`)
+
+	</script>
+</body>
+</html>

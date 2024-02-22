@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			p {
+				font-size: 20px;
+			}
+			li {
+				font-size: 18px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			th {
+				text-align: left;
+			}
+			td {
+				text-align: right;
+				width: 100px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Задача_4</h1>
+	<p>Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</p>
+	
+	<script>
+		//1.Вводимо дані
+		let valueCm = parseFloat(prompt(`Яка довжина у сантиметрах?`, 20))
+		const cmInMetr = 100
+		const cmInKm = 100000
+
+		//2.Знаходимо результат
+		let cmToMetr = valueCm / cmInMetr
+		let cmToKm = valueCm / cmInKm
+
+
+		//3.Виводимо результат
+		document.write(`
+		<table style="border: 2px solid #fff;">
+				<tr>
+					<th>Довжина у сантиметрах (см)</th>
+					<td>${valueCm}</td>
+				</tr>
+				<tr>
+					<th>Довжина у метрах (м)</th>
+					<td>${cmToMetr}</td>
+				</tr>
+				<tr>
+					<th>Довжина у кілометрах (км)</th>
+					<td>${cmToKm}</td>
+				</tr>
+		</table>
+		`)
+
+	</script>
+</body>
+</html>

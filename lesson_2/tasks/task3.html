@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			p {
+				font-size: 20px;
+			}
+			li {
+				font-size: 18px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			th {
+				text-align: left;
+			}
+			td {
+				text-align: right;
+				width: 100px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Задача_3</h1>
+	<p>Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).</p>
+	
+	<script>
+		//1.Вводимо дані
+		let prodCost = parseFloat(prompt(`Введіть вартість товару (.грн)`, 100))
+		let prodQuantity = parseFloat(prompt(`Введіть кількість одиниць товару (.шт)`, 1))
+		const tax = 5
+
+		//2.Знаходимо результат
+		let totalCost = prodCost * prodQuantity
+		let totalCostTax = (totalCost * tax) / 100
+		let total = totalCost + totalCostTax
+
+
+		//3.Виводимо результат
+		document.write(`
+		<table style="border: 2px solid #fff;">
+				<tr>
+					<th>Вартість товару</th>
+					<td>${prodCost}</td>
+				</tr>
+				<tr>
+					<th>Кількість товару</th>
+					<td>${prodQuantity}</td>
+				</tr>
+				<tr>
+					<th>Загальна вартість</th>
+					<td>${totalCost}</td>
+				</tr>
+				<tr>
+					<th>з них ПДВ</th>
+					<td>${totalCostTax}</td>
+				</tr>
+				<tr>
+					<th>В тому числі з ПДВ</th>
+					<td>${total}</td>
+				</tr>
+		</table>
+		`)
+
+	</script>
+</body>
+</html>

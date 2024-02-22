@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			p {
+				font-size: 20px;
+			}
+			li {
+				font-size: 18px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			th {
+				text-align: left;
+				width: 200px;
+			}
+			td {
+				text-align: right;
+				width: 200px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Задача_6</h1>
+	<p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+	
+	<script>
+		//1.Вводимо дані
+		let productOne = parseFloat(prompt(`Яка вартість першого товару? (за шт.)`, 95))
+		let productOneQuantity = parseFloat(prompt(`Яка кількість першого товару`, 1))
+		let productTwo = parseFloat(prompt(`Яка вартість другого товару? (за шт.)`, 19.99))
+		let productTwoQuantity = parseFloat(prompt(`Яка кількість другого товару`, 4))
+		let productThree = parseFloat(prompt(`Яка вартість третього товару? (за шт.)`, 37.89))
+		let productThreeQuantity = parseFloat(prompt(`Яка кількість третього товару`, 2))
+
+		//2.Знаходимо результат
+		let totalPriceProdOne = productOne * productOneQuantity
+		let totalPriceProdTwo = productTwo * productTwoQuantity
+		let totalPriceProdThree = productThree * productThreeQuantity
+		let total = totalPriceProdOne + totalPriceProdTwo + totalPriceProdThree
+		
+		//3.Виводимо результат
+		document.write(`
+		<table style="border: 2px solid #fff;">
+				<tr>
+					<th>x${productOneQuantity}</th>
+					<td>${productOne}</td>
+				</tr>
+				<tr>
+					<th>Назва товару №1</th>
+					<td>${totalPriceProdOne}</td>
+				</tr>
+				<tr>
+					<th>x${productTwoQuantity}</th>
+					<td>${productTwo}</td>
+				</tr>
+				<tr>
+					<th>Назва товару №2</th>
+					<td>${totalPriceProdTwo}</td>
+				</tr>
+				<tr>
+					<th>x${productThreeQuantity}</th>
+					<td>${productThree}</td>
+				</tr>
+				<tr>
+					<th>Назва товару №3</th>
+					<td>${totalPriceProdThree}</td>
+				</tr>
+				<tr>
+					<th>Сума по чеку</th>
+					<td>${total.toFixed(2)}</td>
+				</tr>
+		</table>
+		`)
+
+	</script>
+</body>
+</html>
