@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</p>
+
+	<script>
+		//1.Вводимо дані
+		const userAge = parseInt(prompt('Введіть Ваш вік :'))
+		
+		//2.Знаходимо і виводимо результат
+
+		if (userAge >= 2) {
+			if (userAge < 7)
+				alert('Дитина в садочку')
+			else if (userAge >= 7 && userAge < 17)
+				alert('Школяр')
+			else if (userAge >= 17 && userAge < 22)
+				alert('Студент')
+			else if (userAge >= 22 && userAge < 65)
+				alert('Працівник')
+			else (userAge >= 65)
+				alert('Пенсіонер')
+		} else if (userAge < 2)
+			alert('Вам ще то всьо зарано)')
+		else alert('Некоректний ввід даних')
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>

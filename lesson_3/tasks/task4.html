@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.</p>
+
+	<script>
+		//1.Вводимо дані
+		const vehicleCategory = prompt('Введіть категорію транспортного засобу :')
+		let userChoise
+		//2.Знаходимо і виводимо результат
+		
+		switch (vehicleCategory) {
+			case 'A' : 
+			userChoise = 'Мотоцикл'
+				break;
+			case 'B' : 
+			userChoise = 'Легковий автомобіль'
+				break;
+			case 'C' : 
+			userChoise = 'Вантажний автомобіль'
+				break;
+			default:
+			userChoise = 'Некоректний ввід'
+				break;
+		}
+		alert(userChoise)
+
+	</script>
+</body>
+
+</html>

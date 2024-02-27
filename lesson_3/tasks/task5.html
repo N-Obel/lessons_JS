@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</p>
+	<script>
+		//1.Вводимо дані
+		const dayNumber = parseInt(prompt('Введіть порядковий номер дня в тижні :', '3'))
+		let userChoise
+		//2.Знаходимо і виводимо результат
+
+		switch (dayNumber) {
+			case 1:
+				userChoise = 'Понеділок'
+				break;
+			case 2:
+				userChoise = 'Вівторок'
+				break;
+			case 3:
+				userChoise = 'Середа'
+				break;
+			case 4:
+				userChoise = 'Четвер'
+				break;
+			case 5:
+				userChoise = 'П’ятниця'
+				break;
+			case 6:
+				userChoise = 'Субота'
+				break;
+			case 7:
+				userChoise = 'Неділя'
+				break;
+			default:
+				userChoise = 'Некоректний ввід'
+				break;
+		}
+		alert(userChoise)
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</p>
+	<script>
+		//1.Вводимо дані
+		const NumberOfMonth = parseInt(prompt('Введіть порядковий номер місяця :', '3'))
+		let userChoise
+		//2.Знаходимо і виводимо результат
+
+		switch (NumberOfMonth) {
+			case 12:
+			case 1:
+			case 2:
+				userChoise = 'Зима'
+				break;
+			case 3:
+			case 4:
+			case 5:
+				userChoise = 'Весна'
+				break;
+			case 6:
+			case 7:
+			case 8:
+				userChoise = 'Літо'
+				break;
+			case 9:
+			case 10:
+			case 11:
+				userChoise = 'Осінь'
+				break;
+			default:
+				userChoise = 'Некоректний ввід'
+				break;
+		}
+		alert(userChoise)
+
+	</script>
+</body>
+
+</html>

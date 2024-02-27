@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
+	<script>
+		//1.Вводимо дані
+		const minValue = 1
+		const maxValue = 5
+		let randomValue = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+		let attempt = parseInt(prompt('Вгадай за 2 спроби число від 1 до 5 :'))
+
+		//2.Знаходимо і виводимо результат
+		if (attempt >= 1 && attempt <= 5) {
+			if (attempt == randomValue) {
+				alert('Ви вгадали')
+			} else {
+				attempt = parseInt(prompt('Спробуйте ще раз ввести число від 1 до 5:'))
+				if (attempt == randomValue) {
+					alert('Ви вгадали')
+				} else alert('Нажаль, Ви не вгадали!')
+			}
+		} else alert('Некоректне число!')
+		
+	</script>
+</body>
+
+</html>
