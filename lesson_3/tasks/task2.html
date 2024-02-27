@@ -40,11 +40,11 @@
 
 		//2.Знаходимо і виводимо результат
 		if (attempt >= 1 && attempt <= 5) {
-			if (attempt == randomValue) {
+			if (attempt === randomValue) {
 				alert('Ви вгадали')
 			} else {
 				attempt = parseInt(prompt('Спробуйте ще раз ввести число від 1 до 5:'))
-				if (attempt == randomValue) {
+				if (attempt === randomValue) {
 					alert('Ви вгадали')
 				} else alert('Нажаль, Ви не вгадали!')
 			}
