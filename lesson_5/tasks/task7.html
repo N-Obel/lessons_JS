@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			table {
+				border: 2px solid #fff;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+
+			div {
+				display: flex;
+				gap: 30px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Вивести на екран N абзаців (N вводиться користувачем)</p>
+
+	<script>
+
+		let n = parseInt(prompt('Введіть число :'))
+
+		for (let h = 1; h <= n; h++){
+			document.write(`<h2>Заголовок №${h}</h2>`)			
+			for (let p = 1; p <= n; p++) {
+				document.write(`<p>Розділ №${h}, Параграф №${p}</p>`)
+			}
+		}
+
+	</script>
+</body>
+
+</html>

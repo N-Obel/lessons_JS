@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_14</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_14</h1>
+	<p>Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести). </p>
+	<script>
+
+		let totalPrice = 700
+		let currentSum = 0
+
+		do {
+			let userSum = parseInt(prompt(`Потрібно сплатити ${totalPrice -= currentSum}. Внесіть суму: `))
+			currentSum =+ userSum
+			if(userSum < totalPrice){
+				alert(`Вам потрібно доплатити ${totalPrice - userSum}`)
+			}
+		} while (currentSum < totalPrice)
+		alert(`Дякуємо за покупку!`)
+		
+	</script>
+</body>
+
+</html>

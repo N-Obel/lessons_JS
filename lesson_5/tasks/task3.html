@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			table {
+				border: 2px solid #fff;
+			}
+			td {
+				border: 1px solid #fff;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Вивести таблицю з одним рядком і 7 стовпцями</p>
+
+	<script>
+
+		document.write(`<table> <tr>`)
+		for (let columnNum = 1; columnNum <= 7; columnNum++) {
+			document.write(`
+			<td>${columnNum}</td>
+			`)
+		}
+		document.write(`</tr> </table>`)
+
+	</script>
+</body>
+
+</html>

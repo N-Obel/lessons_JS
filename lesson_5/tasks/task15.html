@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_15</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			table {
+				border: 2px solid #fff;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+
+			div {
+				display: flex;
+				gap: 30px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_15</h1>
+	<p>Користувач поступово вводить показники температури протягом року. Знайти середню температуру.</p>
+
+	<script>
+
+		let totalTemperature = 0
+
+		for (let dayNumber = 1; dayNumber <= 5; dayNumber++) {
+			let tempQuantity = parseInt(prompt('Введіть температуру сьогодні :'))
+			totalTemperature += tempQuantity
+		}
+		const average = totalTemperature / 5
+		document.write(`Середня температура за 5 днів : ${average} &degC`)
+
+	</script>
+</body>
+
+</html>

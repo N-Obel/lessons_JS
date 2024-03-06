@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_-2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			table {
+				border: 2px solid #fff;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+
+			div {
+				display: flex;
+				gap: 30px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_-2</h1>
+	<p>Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.</p>
+
+	<script>
+
+		let pairNum = 0
+		let notPairNum = 0
+
+		for (let i = 0; i < 100; i++){
+			let randomNum = 1 + Math.floor(Math.random() * (1000 - 1 + 1))
+			if(randomNum % 2 === 0) pairNum++
+			else notPairNum++
+		}
+
+		document.write(`Парних чисел = ${pairNum}, не парних чисел = ${notPairNum}`)
+		
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			table {
+				border: 2px solid #fff;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Вивести таблицю з 3 рядків і 7 стовпців</p>
+
+	<script>
+
+		document.write(`<table>`)
+		for (let row = 1; row <= 3; row++) {
+			document.write(`<tr></tr>`)
+			for (let columnNum = 1; columnNum <= 7; columnNum++) {
+			document.write(`<td>${columnNum}</td>`)
+		}
+		}
+		document.write(`</table>`)
+
+	</script>
+</body>
+
+</html>

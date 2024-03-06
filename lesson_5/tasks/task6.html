@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			table {
+				border: 2px solid #fff;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+
+			div {
+				display: flex;
+				gap: 30px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній)</p>
+
+	<script>
+
+		document.write(`<div>`)
+		let numCount = 0
+		for (let table = 1; table <= 3; table++) {
+			document.write(`<table>`)
+			for (let row = 1; row <= 3; row++) {
+				document.write(`<tr>`)
+				for (let columnNum = 1; columnNum <= 3; columnNum++) {
+					document.write(`<td>${++numCount}</td>`)
+				}
+				document.write(`</tr>`)
+			}
+			document.write(`</table>`)
+		}
+		document.write(`</div>`)
+
+	</script>
+</body>
+
+</html>
