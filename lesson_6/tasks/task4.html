@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p> Комерсант, володіючи стартовим капіталом N грн, зайнявся торгівлею, що збільшує його капітал щомісячно на р%. Через скільки років він накопичить суму S, достатню для того, щоб придбати власний магазин?</p>
+	<script>
+
+		let n = parseFloat(prompt('Введіть стратовий капітал (грн):', '10000'));
+		let p = parseFloat(prompt('Введіть місячний приріст капіталу (%):', '10'));
+		let s = parseFloat(prompt('Введіть суму для покупки магазину (грн):', '20000'));
+		let month = 0
+		let capital = n
+
+		while (capital < s) {
+			capital *= (1 + p / 100)
+			month++
+		}
+
+		document.write(`Комерсант зможе купити магазин через ${month} місяців`)
+
+	</script>
+</body>
+
+</html>

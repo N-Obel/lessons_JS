@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_0</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Прямокутний</h1>
+	<p></p>
+	
+	<script>
+
+		let height = parseInt(prompt('Введіть висоту трикутника = '))
+		for (let i = 1; i <= height; i++) {
+			let row = ''
+			for (let j = 1; j <= i; j++)
+				row += 'o'
+			document.write(`${row}<br>`)
+		}
+
+	</script>
+</body>
+
+</html>

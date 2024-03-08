@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Написати програму, що виводить на екран таблицю множення на k (k вводиться з клавіатури)</p>
+	<script>
+
+
+		let k = parseInt(prompt('Введіть число від 2 до 10 :'))
+		let result = 0
+		for (let i = 1; i <= 10; i++) {
+			result = k * i
+			document.write(`
+			<table>
+				<tr>
+					<td>${k} *</td>
+					<td>${i} =</td>
+					<td>${result}</td>
+				</tr>
+			</table>			
+			`)
+		}
+
+	</script>
+</body>
+
+</html>
