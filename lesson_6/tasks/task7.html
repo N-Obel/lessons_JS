@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Інвестор вклав S тис. грн на 20 років під 20% річних, (без оподаткування) / податок складає 5% від суми прибутку. Визначити за допомогою циклів суму, яку він одержить</p>
+
+	<script>
+		//Об’єднав 2 задачі в одну)
+		
+		const years = 20
+		const percents = 0.2
+		const tax = 0.05
+		let result = 0
+		let s = parseFloat(prompt('Скільки грошей вклав інвестор: ', '10000'))
+		let moneyPerYear = s * 0.2
+
+
+		for (let i = 1; i <= years; i++) {
+			result += moneyPerYear
+		}
+		document.write(`Сума доходу через 20 років без оподаткування = ${result} <br>`)
+
+		let moneyIncludeTaxes = Math.floor(result - (result * tax))
+
+		document.write(`Сума доходу через 20 років за виключеням податку= ${moneyIncludeTaxes}`)
+
+	</script>
+</body>
+
+</html>

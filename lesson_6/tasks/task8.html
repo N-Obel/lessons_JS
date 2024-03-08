@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			p {
+				font-size: 20px;
+			}
+
+			li {
+				font-size: 18px;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>З клавіатури вводитяться числа поки не буде введено 0. Знайти суму чисел</p>
+	<script>
+	
+		let sum = 0
+		let someNum
+		do {
+			someNum = parseInt(prompt('Введіть число :'))
+			sum += someNum
+		} while (someNum > 0)
+		document.write(`Sum = ${sum}`)
+
+	</script>
+</body>
+
+</html>
