@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_8</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		div{
+			border: 2px solid #fff;
+			width: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_8</h1>
+	<p> Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення) тег img повине знаходитись у середині тега a: <!--<a> <img src=”шлях”> </a>--></p>
+	<script>
+
+		function showBanner(someImage, someTitle, someLink) {
+			document.write(`
+			<div>
+				<h2>${someTitle}</h2>
+					<a href=${someLink}>${someImage}</a>
+			</div>`)
+		}
+
+		let someImage = '<img src="../img/1.svg" alt="Image">'
+		let someTitle = prompt('Введіть текст: ')
+		let someLink = 'https://www.google.com'
+
+		showBanner(someImage, someTitle, someLink)
+	</script>
+
+</body>
+
+</html>

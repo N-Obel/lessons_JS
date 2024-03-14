@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task_0</title>
+	<title>task_6</title>
 	<style>
 		body {
 			background-color: #14171F;
@@ -25,43 +25,35 @@
 			text-align: center;
 			margin-bottom: 40px;
 		}
+
+		table {
+			border: 2px solid #fff;
+		}
 	</style>
 </head>
 
 <body>
-	<h1>Задача_0</h1>
-	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+	<h1>Задача_6</h1>
+	<p>Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).</p>
 	<script>
 
-		function getMonthNumber(userChoise) {
-			let timeOfYear
-			switch (userChoise) {
-				case 12:
-				case 1:
-				case 2: timeOfYear = 'Зима'
-					break
-				case 3:
-				case 4:
-				case 5: timeOfYear = 'Весна'
-					break
-				case 6:
-				case 7:
-				case 8: timeOfYear = 'Літо'
-					break
-				case 9:
-				case 10:
-				case 11: timeOfYear = 'Осінь'
-					break
-				default: timeOfYear = 'некоретний ввід даних!'
-					break
+		function createTable(rows, columns) {
+			document.write(`<table>`)
+			for (let i = 1; i <= rows; i++) {
+				document.write(`<tr>`)
+				for (let k = 1; k <= columns; k++) {
+					document.write(`<td>${message}</td>`)
+				}
+				document.write(`</tr>`)
 			}
-			return timeOfYear
+			document.write(`</table>`)
 		}
 
-		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))
-		let result = getMonthNumber(userChoise)
-		document.write(`Зараз ${result}`)
+		let rowsNum = parseInt(prompt('Введіть кількість рядків: '))
+		let columnsNum = parseInt(prompt('Введіть кількість стовпців: '))
+		let message = prompt('Введіть повідомлення: ')
 
+		let result = createTable(rowsNum, columnsNum)
 	</script>
 </body>
 

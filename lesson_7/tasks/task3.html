@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task_0</title>
+	<title>task_3</title>
 	<style>
 		body {
 			background-color: #14171F;
@@ -12,15 +12,12 @@
 			max-width: 1200px;
 			margin: 0 auto;
 		}
-
 		p {
 			font-size: 20px;
 		}
-
 		li {
 			font-size: 18px;
 		}
-
 		h1 {
 			text-align: center;
 			margin-bottom: 40px;
@@ -29,38 +26,48 @@
 </head>
 
 <body>
-	<h1>Задача_0</h1>
-	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+	<h1>Задача_3</h1>
+	<p>Створити окремі функції, які для 4 чисел знаходять:</p>
+	<ol>
+		<li>суму</li>
+		<li>добуток</li>
+		<li>середнє арифметичне</li>
+		<li>мінімальне значення</li>
+	</ol>
 	<script>
-
-		function getMonthNumber(userChoise) {
-			let timeOfYear
-			switch (userChoise) {
-				case 12:
-				case 1:
-				case 2: timeOfYear = 'Зима'
-					break
-				case 3:
-				case 4:
-				case 5: timeOfYear = 'Весна'
-					break
-				case 6:
-				case 7:
-				case 8: timeOfYear = 'Літо'
-					break
-				case 9:
-				case 10:
-				case 11: timeOfYear = 'Осінь'
-					break
-				default: timeOfYear = 'некоретний ввід даних!'
-					break
-			}
-			return timeOfYear
+		function sum(num1, num2, num3, num4) {
+			return num1 + num2 + num3 + num4
+		}
+		function multiplication(num1, num2, num3, num4) {
+			return num1 * num2 * num3 * num4
+		}
+		function averageValue(num1, num2, num3, num4) {
+			return (num1 + num2 + num3 + num4) / 4
+		}
+		function minValue(num1, num2, num3, num4) {
+			return Math.min(num1, num2, num3, num4)
 		}
 
-		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))
-		let result = getMonthNumber(userChoise)
-		document.write(`Зараз ${result}`)
+		let num1 = parseInt(prompt('Введіть перше число: '))
+		let num2 = parseInt(prompt('Введіть друге число: '))
+		let num3 = parseInt(prompt('Введіть третє число: '))
+		let num4 = parseInt(prompt('Введіть четверте число: '))
+
+		document.write(`Ви ввели 4 числа : перше ${num1}, друге ${num2}, третє ${num3}, четверте ${num4}`)
+
+		let sumResult = sum(num1, num2, num3, num4)
+		let multiplicationResult = multiplication(num1, num2, num3, num4)
+		let averageValueResult = averageValue(num1, num2, num3, num4)
+		let minValueResult = minValue(num1, num2, num3, num4)
+
+		document.write(`
+		<ol>
+			<li>Сума введних чисел ${sumResult}</li>
+			<li>Добуток введних чисел ${multiplicationResult}</li>
+			<li>Середнє арифметичне введних чисел ${averageValueResult}</li>
+			<li>Мінімальне значення серед введних чисел ${minValueResult}</li>
+		</ol>
+		`)
 
 	</script>
 </body>

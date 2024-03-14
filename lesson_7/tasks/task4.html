@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task_0</title>
+	<title>task_4</title>
 	<style>
 		body {
 			background-color: #14171F;
@@ -29,38 +29,10 @@
 </head>
 
 <body>
-	<h1>Задача_0</h1>
-	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+	<h1>Задача_4</h1>
+	<p>Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.</p>
 	<script>
 
-		function getMonthNumber(userChoise) {
-			let timeOfYear
-			switch (userChoise) {
-				case 12:
-				case 1:
-				case 2: timeOfYear = 'Зима'
-					break
-				case 3:
-				case 4:
-				case 5: timeOfYear = 'Весна'
-					break
-				case 6:
-				case 7:
-				case 8: timeOfYear = 'Літо'
-					break
-				case 9:
-				case 10:
-				case 11: timeOfYear = 'Осінь'
-					break
-				default: timeOfYear = 'некоретний ввід даних!'
-					break
-			}
-			return timeOfYear
-		}
-
-		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))
-		let result = getMonthNumber(userChoise)
-		document.write(`Зараз ${result}`)
 
 	</script>
 </body>

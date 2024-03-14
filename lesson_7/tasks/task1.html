@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task_0</title>
+	<title>task_1</title>
 	<style>
 		body {
 			background-color: #14171F;
@@ -29,33 +29,41 @@
 </head>
 
 <body>
-	<h1>Задача_0</h1>
-	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+	<h1>Задача_1</h1>
+	<p>Створити функцію, яка за номером місяця повертає його назву.</p>
 	<script>
 
 		function getMonthNumber(userChoise) {
-			let timeOfYear
+			let monthOfYear
 			switch (userChoise) {
-				case 12:
-				case 1:
-				case 2: timeOfYear = 'Зима'
+				case 12: monthOfYear = 'Грудень'
 					break
-				case 3:
-				case 4:
-				case 5: timeOfYear = 'Весна'
+				case 1: monthOfYear = 'Січень'
 					break
-				case 6:
-				case 7:
-				case 8: timeOfYear = 'Літо'
+				case 2: monthOfYear = 'Лютий'
 					break
-				case 9:
-				case 10:
-				case 11: timeOfYear = 'Осінь'
+				case 3: monthOfYear = 'Березень'
 					break
-				default: timeOfYear = 'некоретний ввід даних!'
+				case 4: monthOfYear = 'Квітень'
+					break
+				case 5: monthOfYear = 'Травень'
+					break
+				case 6: monthOfYear = 'Червень'
+					break
+				case 7: monthOfYear = 'Липень'
+					break
+				case 8: monthOfYear = 'Серпень'
+					break
+				case 9: monthOfYear = 'Вересень'
+					break
+				case 10: monthOfYear = 'Жовтень'
+					break
+				case 11: monthOfYear = 'Листопад'
+					break
+				default: monthOfYear = 'некоретний ввід даних!'
 					break
 			}
-			return timeOfYear
+			return monthOfYear
 		}
 
 		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))

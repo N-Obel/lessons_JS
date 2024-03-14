@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task_0</title>
+	<title>task_2</title>
 	<style>
 		body {
 			background-color: #14171F;
@@ -29,38 +29,31 @@
 </head>
 
 <body>
-	<h1>Задача_0</h1>
-	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+	<h1>Задача_2</h1>
+	<p>Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</p>
 	<script>
 
-		function getMonthNumber(userChoise) {
-			let timeOfYear
+		function getDayNumber(userChoise) {
+			let kindOfDay
 			switch (userChoise) {
-				case 12:
 				case 1:
-				case 2: timeOfYear = 'Зима'
-					break
+				case 2:
 				case 3:
 				case 4:
-				case 5: timeOfYear = 'Весна'
+				case 5: kindOfDay = 'робочий'
 					break
 				case 6:
-				case 7:
-				case 8: timeOfYear = 'Літо'
+				case 7: kindOfDay = 'вихідний'
 					break
-				case 9:
-				case 10:
-				case 11: timeOfYear = 'Осінь'
-					break
-				default: timeOfYear = 'некоретний ввід даних!'
+				default: kindOfDay = 'некоретний ввід даних!'
 					break
 			}
-			return timeOfYear
+			return kindOfDay
 		}
-
-		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))
-		let result = getMonthNumber(userChoise)
-		document.write(`Зараз ${result}`)
+	
+		let userChoise = parseInt(prompt('Введіть порядковий номер дня тижня: '))
+		let result = getDayNumber(userChoise)
+		document.write(`Зараз ${result} день`)
 
 	</script>
 </body>
