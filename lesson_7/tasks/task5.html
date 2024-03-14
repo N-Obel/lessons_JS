@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>Створити окремі функції, які переводять:</p>
+	<ol>
+		<li>Сантиметри у дюйми;</li>
+		<li>Кілограми у фунти;</li>
+		<li>Кілометри у милі.</li>
+	</ol>
+	<script>
+		function getCmToInches(someCm) {
+			return someCm * 0.393701
+		}
+		function getKgToLb(someKg) {
+			return someKg * 2.20462
+		}
+		function getKmToMiles(someKm) {
+			return someKm * 0.621371
+		}
+
+		let someCm = parseInt(prompt('Введіть кількість сантиметрів: '))
+		let someKg = parseInt(prompt('Введіть кількість кілограм: '))
+		let someKm = parseInt(prompt('Введіть кількість кілометрів: '))
+
+		document.write(`Ви ввели : ${someCm}см, ${someKg}кг, ${someKm}км`)
+
+		let inches = getCmToInches(someCm)
+		let libs = getKgToLb(someKg)
+		let miles = getKmToMiles(someKm)
+
+		document.write(`
+			<ol>
+				<li>У ${someCm}см - ${inches.toFixed(2)} дюймів</li>
+				<li>У ${someKg}кг - ${libs.toFixed(2)} фунтів</li>
+				<li>У ${someKm}км - ${miles.toFixed(2)} миль</li>
+			</ol>
+			`)
+	</script>
+</body>
+
+</html>

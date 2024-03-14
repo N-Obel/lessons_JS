@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p>Створити функцію, яка за номером місяця повертає його назву.</p>
+	<script>
+
+		function getMonthNumber(userChoise) {
+			let monthOfYear
+			switch (userChoise) {
+				case 12: monthOfYear = 'Грудень'
+					break
+				case 1: monthOfYear = 'Січень'
+					break
+				case 2: monthOfYear = 'Лютий'
+					break
+				case 3: monthOfYear = 'Березень'
+					break
+				case 4: monthOfYear = 'Квітень'
+					break
+				case 5: monthOfYear = 'Травень'
+					break
+				case 6: monthOfYear = 'Червень'
+					break
+				case 7: monthOfYear = 'Липень'
+					break
+				case 8: monthOfYear = 'Серпень'
+					break
+				case 9: monthOfYear = 'Вересень'
+					break
+				case 10: monthOfYear = 'Жовтень'
+					break
+				case 11: monthOfYear = 'Листопад'
+					break
+				default: monthOfYear = 'некоретний ввід даних!'
+					break
+			}
+			return monthOfYear
+		}
+
+		let userChoise = parseInt(prompt('Введіть порядковий номер місяця: '))
+		let result = getMonthNumber(userChoise)
+		document.write(`Зараз ${result}`)
+
+	</script>
+</body>
+
+</html>

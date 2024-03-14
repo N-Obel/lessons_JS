@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)</p>
+	<script>
+		
+		function showRandomImage(firstImage, secondImage, thirdImage, fourthImage){
+			let randomImageNum = 1 + Math.floor(Math.random() * 4)
+			switch (randomImageNum) {
+				case 1:
+					return firstImage
+				case 2:
+					return secondImage
+				case 3:
+					return thirdImage
+				case 4:
+					return fourthImage
+			}
+		}						
+		const firstImage = '../img/1.svg'
+		const secondImage = '../img/2.svg'
+		const thirdImage = '../img/3.svg'
+		const fourthImage = '../img/4.svg'
+
+		let showImage = showRandomImage(firstImage, secondImage, thirdImage, fourthImage)
+		document.write(`<img src="${showImage}">`)
+
+		</script>
+</body>
+
+</html>
