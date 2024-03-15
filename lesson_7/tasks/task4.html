@@ -32,8 +32,31 @@
 	<h1>Задача_4</h1>
 	<p>Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.</p>
 	<script>
+		function calcNum(num1, num2, num3) {
+			let evenNumbers = 0
+			let positiveNumbers = 0
+			let moreHudredNumbers = 0
 
+			if (num1 % 2 === 0) evenNumbers++
+			if (num2 % 2 === 0) evenNumbers++
+			if (num3 % 2 === 0) evenNumbers++
+			if (num1 > 0) positiveNumbers++
+			if (num2 > 0) positiveNumbers++
+			if (num3 > 0) positiveNumbers++
+			if (num1 > 100) moreHudredNumbers++
+			if (num2 > 100) moreHudredNumbers++
+			if (num3 > 100) moreHudredNumbers++
 
+			document.write(`Парних чисел : ${evenNumbers}, додатніх числе : ${positiveNumbers}, більше за 100 : ${moreHudredNumbers}`)
+		}
+
+		let num1 = parseInt(prompt('Введіть перше число: '))
+		let num2 = parseInt(prompt('Введіть друге число: '))
+		let num3 = parseInt(prompt('Введіть третє число: '))
+
+		document.write(`Ви ввели : ${num1}, ${num2}, ${num3}<br>`)
+
+		calcNum(num1, num2, num3)
 	</script>
 </body>
 
