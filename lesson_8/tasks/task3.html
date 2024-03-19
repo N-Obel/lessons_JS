@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+	<script>
+
+		let pupilNames = ['Olga', 'Alla', 'John', 'Ivan', 'Alex', 'Olga', 'Alla', 'John', 'Ivan', 'Alex']
+		function getPupilName(findName, pupilNames) {
+			let count = 0
+			for(let i = 0; i < pupilNames.length; i++){
+				if (findName === pupilNames[i])
+				count++
+			}
+			return count
+		}
+		document.write(`${getPupilName('Ivan', pupilNames)}`)
+		
+	</script>
+</body>
+
+</html>

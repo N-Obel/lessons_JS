@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p>Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+	</p>
+	<script>
+
+		const minValue = 2
+		const maxValue = 5
+		let numberOfClasses = parseInt(prompt('Введіть кількість предметів: '))	
+		let arrayOfGrades = []
+		for (let i = 0; i < numberOfClasses; i++) {
+			arrayOfGrades.push(getRandomGrade(minValue, maxValue))
+		}
+
+		function getRandomGrade(minValue, maxValue) {
+			return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+		}
+
+		function getPupilAverageGrade(arrayOfGrades) {
+			let averageGrade = 0
+			for (let i = 0; i < arrayOfGrades.length; i++) {
+				averageGrade += arrayOfGrades[i]
+			}
+			return averageGrade / arrayOfGrades.length
+		}
+
+		function getMinGrade(arrayOfGrades) {
+			let min = arrayOfGrades[0]
+			for (let i = 1; i < arrayOfGrades.length; i++) {
+				if (arrayOfGrades[i] < min) min = arrayOfGrades[i]
+			}
+			return min
+		}
+
+		function getCategoryByMinGrade(minGrade){
+			let categoryStudent
+			switch (minGrade) {
+				case 5:
+					categoryStudent = 'відмінник'
+					break;
+				case 4:
+					categoryStudent = 'хорошист'
+					break;
+				case 3:
+					categoryStudent = 'трійочник'
+					break;
+				default:
+					categoryStudent = 'двійочник'
+					break;
+			}
+			return categoryStudent
+		}
+		document.write(`В масиві оцінок - ${arrayOfGrades} з - ${numberOfClasses} предметів, <br> середній бал - ${getPupilAverageGrade(arrayOfGrades)},<br>
+		мінімальний бал - ${getMinGrade(arrayOfGrades)},<br> категорія учня - ${getCategoryByMinGrade(getMinGrade(arrayOfGrades))}`)
+
+	</script>
+</body>
+
+</html>

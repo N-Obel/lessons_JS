@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+	<ul>
+		<li>двійок</li>
+		<li>кількість хороших оцінок (добре, відмінно);</li>
+		<li>кількість оцінок, які нижче середнього.</li>
+	</ul>
+	<script>
+
+		const pupilGrades = [2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5]
+
+		// Підрахувати кількість двійок
+		function getGradesTwo(pupilGrades, grade) {
+			let quantity = 0
+			for (let i = 0; i < pupilGrades.length; i++) {
+				if (pupilGrades[i] === grade) quantity++
+
+			}
+			return quantity
+		}
+		// Підрахувати кількість хороших оцінок (добре, відмінно);
+		function getGradesGoodGrades(pupilGrades, gradeFour, gradeFive) {
+			let quantity = 0
+			for (let i = 0; i < pupilGrades.length; i++) {
+				if (pupilGrades[i] === gradeFour || pupilGrades[i] === gradeFive) quantity++
+			}
+			return quantity
+		}
+		//----------------------------------------------- //
+		// Підраховуємо середню оцінку
+		function getAverageGrade(pupilGrades) {
+			let average = 0
+			for (let i = 0; i < pupilGrades.length; i++) {
+				average += pupilGrades[i]
+			}
+			return average / pupilGrades.length
+		}
+		//----------------------------------------------- //
+		// Підрахувати кількість оцінок, які нижче середнього.
+		function getGradesLessAverage(pupilGrades) {
+			let quantity = 0
+			let average = getAverageGrade(pupilGrades)
+			for (let i = 0; i < pupilGrades.length; i++) {
+				if (pupilGrades[i] < average) quantity++
+			}
+			return quantity
+		}
+		document.write(`
+			<p>Дано послідовність оцінок учня - ${pupilGrades} Підрахувати кількість:</p>
+				<ul>
+					<li>двійок - ${getGradesTwo(pupilGrades, 2)}</li>
+					<li>кількість хороших оцінок (добре, відмінно) - ${getGradesGoodGrades(pupilGrades, 4, 5)}</li>
+					<li>кількість оцінок, які нижче середнього - ${getGradesLessAverage(pupilGrades)}</li>
+				</ul>
+		`)
+
+	</script>
+</body>
+
+</html>

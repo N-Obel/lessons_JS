@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).</p>
+	<script>
+		
+		let productsPrices = [27, 40, 38, 60, 35, 37, 70, 170, 270, 210]
+		let productsTitles = ['Хліб', 'Молоко', 'Кефір', 'Масло', 'Кетчуп', 'Вода', 'Сир', 'Ковбаса', 'М’ясо', 'Піцца']
+		let userMoney = parseFloat(prompt('Скільки у Вас грошей?'))
+
+		function userCanBuy(productsPrices, productsTitles, userMoney) {
+			let arr = []
+			for (let i = 0; i < productsPrices.length; i++) {
+				if (userMoney >= productsPrices[i]) arr.push(productsTitles[i])
+			}
+			return arr
+		}
+		document.write(`Ви можете придбати  - ${userCanBuy(productsPrices, productsTitles, userMoney)}`)
+
+	</script>
+</body>
+
+</html>

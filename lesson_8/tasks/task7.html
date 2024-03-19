@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:</p>
+	<ul>
+		<li>за весь рік;</li>
+		<li>у першій половині року;</li>
+		<li>у другій половині року;</li>
+		<li>за літо;</li>
+		<li>за ІІ квартал;</li>
+		<li>за парні місяці (з парними номерами);</li>
+		<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+	</ul>
+	<script>
+
+		const totalPayments = [1000, 2000, 3000, 4000, 5000, 4000, 3000, 2000, 1000, 1500, 1700, 2500]
+
+		function moneySum(totalPayments, startMonth, endMonth, step = 1) {
+			let sum = 0
+			for (let i = startMonth - 1; i < endMonth; i += step) {
+				sum += totalPayments[i]
+			}
+			return sum
+		}
+
+		document.write(`	
+		<p>Дано послідовність платіжок протягом року - ${totalPayments} Знайти сумарну кількість грошей за: </p>
+			<ol>
+				<li>за весь рік - ${moneySum(totalPayments, 1, 12)}грн.</li>
+				<li>у першій половині року - ${moneySum(totalPayments, 1, 6)}грн.</li>
+				<li>у другій половині року - ${moneySum(totalPayments, 7, 12)}грн.</li>
+				<li>за літо - ${moneySum(totalPayments, 6, 8)}грн.</li>
+				<li>за ІІ квартал - ${moneySum(totalPayments, 4, 6)}грн.</li>
+				<li>за парні місяці (з парними номерами) - ${moneySum(totalPayments, 2, 12, 2)}грн.</li>
+				<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима) - ${moneySum(totalPayments, 3, 12, 3)}грн.</li>
+			</ol>`)
+
+	</script>
+</body>
+
+</html>
