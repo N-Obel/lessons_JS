@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки</p>
+	<script>
+
+		let pricesArray = [400, 100, 4000, 1500, 700, 3500, 4500, 5500, 700, 3000, 1800, 900, 1600]
+		const fixedPrice = 1000
+		const discount = 0.3
+		pricesArray.forEach(
+			(value, index, arr) => {
+				if (value > fixedPrice) pricesArray[index] = value - value * discount
+			});
+		document.write(`${pricesArray}`)
+
+	</script>
+</body>
+
+</html>

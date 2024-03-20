@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_8</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_8</h1>
+	<p>Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+	<script>
+
+		let carNumbersArray = ['AA1549CA', 'AB1649CB', 'AA2726HT', 'AA0409CA', 'AA0020CA', 'BM1520CA', 'BH1542CA', 'CA1509CA', 'BM1540CA', 'BH1049CA', 'BM1149CA']
+		let newArrayBeginA = []
+
+		for (const value of carNumbersArray) {
+			if (value[0] === 'A') newArrayBeginA.push(value)
+		}
+		document.write(`${newArrayBeginA}`)
+
+	</script>
+</body>
+
+</html>

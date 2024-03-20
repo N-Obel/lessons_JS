@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.</p>
+	<script>
+
+		let elementsQuantity = parseInt(prompt('Введіть кількість елементів: '))
+
+		let elementsArray = new Array(elementsQuantity).fill(1, 0, 5)
+		elementsArray.fill(7, 5)
+	
+		document.write(`${elementsArray}`)
+
+	</script>
+</body>
+
+</html>

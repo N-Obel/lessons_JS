@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+	<script>
+
+		let elementsArray = [4, 1, 4, 15, 7, 8, 5, 10, 7, 3, 8, 9, 6]
+		document.write(`Дано масив елементів - ${elementsArray}<br>`)
+		elementsArray.forEach(
+			(value, index, arr) => {
+				if (value > arr[0]) arr[index] *= 2
+			}
+		)
+
+		document.write(`Усі елементи, які більші за перший елемент помножили на 2 - ${elementsArray}`)
+
+	</script>
+</body>
+
+</html>

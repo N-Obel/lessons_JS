@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_9</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_9</h1>
+	<p>Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+	<script>
+
+		let carNumbersArray = ['Nik', 'Jon', 'Alla', 'Olga', 'Alex', 'Andrew', 'Hordiy', 'Sveta', 'Maksim']
+		let firstLetterArray = carNumbersArray.map(
+			(value) => value[0]
+		)
+
+		document.write(`${firstLetterArray}`)
+
+	</script>
+</body>
+
+</html>

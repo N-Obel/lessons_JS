@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+	<script>
+
+		let elementsArray = [90, 100, 110, 122, 130, 140, 150, 160, 70, 17, 80, 19, 200]
+		for (const value of elementsArray) {
+			if(value > 100) document.write(`${value}<br>`)
+		}
+		
+	</script>
+</body>
+
+</html>
