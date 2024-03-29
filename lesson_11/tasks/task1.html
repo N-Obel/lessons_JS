@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p>Знайти суми елементів у вказаній області</p>
+	<script>
+		//========================================================================================================================================================
+		let numArr = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+		let halfOfArrLength = numArr.length / 2
+		//========================================================================================================================================================
+		// 1.1 --> номери рядків від 0 до половини, стовпці від 0 до половини (ліва верхня половина)
+		//========================================================================================================================================================
+		let sumLeftTopHalf = 0
+		for (let rowIndex = 0; rowIndex < halfOfArrLength; rowIndex++) {
+			for (let columnIndex = 0; columnIndex < halfOfArrLength; columnIndex++) {
+				sumLeftTopHalf += numArr[rowIndex][columnIndex]
+			}
+		}
+		document.write(`Номери рядків від 0 до половини, стовпці від 0 до половини = ${sumLeftTopHalf}<br>`);
+		//========================================================================================================================================================
+		// 1.2 --> номери рядків від 0 до половини, стовпці від половини до кінця (права верхня половина)
+		//========================================================================================================================================================
+		let sumRightTopHalf = 0
+		for (let rowIndex = 0; rowIndex < halfOfArrLength; rowIndex++) {
+			for (let columnIndex = halfOfArrLength; columnIndex < numArr.length; columnIndex++) {
+				sumRightTopHalf += numArr[rowIndex][columnIndex]
+			}
+		}
+		document.write(`Номери рядків від 0 до половини, стовпці від половини до кінця = ${sumRightTopHalf}<br>`);
+		//========================================================================================================================================================
+		// 1.3 --> номери рядків від половини до кінця, стовпці від 0 до половини (ліва нижня половина)
+		//========================================================================================================================================================
+		let sumLeftBottHalf = 0
+		for (let rowIndex = halfOfArrLength; rowIndex < numArr.length; rowIndex++) {
+			for (let columnIndex = 0; columnIndex < halfOfArrLength; columnIndex++) {
+				sumLeftBottHalf += numArr[rowIndex][columnIndex]
+			}
+		}
+		document.write(`Номери рядків від половини до кінця, стовпці від 0 до половини = ${sumLeftBottHalf}<br>`);
+		//========================================================================================================================================================
+		// 1.4 --> номери рядків від половини до кінця, стовпці від половини до кінця (права нижня половина)
+		//========================================================================================================================================================
+		let sumRightBottHalf = 0
+		for (let rowIndex = halfOfArrLength; rowIndex < numArr.length; rowIndex++) {
+			for (let columnIndex = halfOfArrLength; columnIndex < numArr.length; columnIndex++) {
+				sumRightBottHalf += numArr[rowIndex][columnIndex]
+			}
+		}
+		document.write(`Номери рядків від половини до кінця, стовпці від половини до кінця = ${sumRightBottHalf}<br>`);
+		//========================================================================================================================================================
+		// 1.5 --> суму парних рядків
+		//========================================================================================================================================================
+		let sumEvenRows = 0
+		for (let rowIndex = 0; rowIndex < numArr.length; rowIndex++) {
+			if (rowIndex % 2 === 0) {
+				for (let columnIndex = 0; columnIndex < numArr.length; columnIndex++) {
+					sumEvenRows += numArr[rowIndex][columnIndex]
+				}
+			}
+		}
+		document.write(`Сума парних рядків = ${sumEvenRows}<br>`)
+		//========================================================================================================================================================
+		// 1.6 --> суму непарних стовпців
+		//========================================================================================================================================================
+		let sumOddColumns = 0
+		for (let columnIndex = 0; columnIndex < numArr.length; columnIndex++) {
+			if (columnIndex % 2 !== 0)
+				for (let rowIndex = 0; rowIndex < numArr.length; rowIndex++) {
+					sumOddColumns += numArr[rowIndex][columnIndex]
+				}
+		}
+		document.write(`Сума непарних стовпців = ${sumOddColumns}<br>`)
+		//========================================================================================================================================================
+		// 1.7 --> у парних рядках – непарні стовпці, у непарних – парні.
+		//========================================================================================================================================================
+		let sumOddColumnsInEvenRows = 0
+		let sumEvenColumnsInOddRows = 0
+		for (let rowIndex = 0; rowIndex < numArr.length; rowIndex++) {
+			if (rowIndex % 2 === 0) {
+				for (let columnIndex = 0; columnIndex < numArr.length; columnIndex++) {
+					if (columnIndex % 2 !== 0) {
+						sumOddColumnsInEvenRows += numArr[rowIndex][columnIndex]
+					}
+				}
+			} else {
+				for (let columnIndex = 0; columnIndex < numArr.length; columnIndex++) {
+					if (columnIndex % 2 === 0) {
+						sumEvenColumnsInOddRows += numArr[rowIndex][columnIndex]
+					}
+				}
+			}
+		}
+		document.write(`У парних рядках – непарні стовпці = ${sumOddColumnsInEvenRows}<br>`)
+		document.write(`У непарних – парні = ${sumEvenColumnsInOddRows}`)
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>

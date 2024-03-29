@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.</p>
+	<script>
+		//========================================================================================================================================================
+		const rowIndex = 6
+		const columnIndex = 6
+		const shipsQuantity = 5
+		let userChoiseShots = parseInt(prompt('Введіть бажану кількість пострілів: '))
+		//========================================================================================================================================================
+		// Будуємо порожнє ігрове поле
+		function generateField(rowIndex, columnIndex) {
+			let fieldArr = []
+			for (let i = 0; i < rowIndex; i++) {
+				let rowArr = new Array(columnIndex).fill(0)
+				fieldArr.push(rowArr)
+			}
+			return fieldArr
+		}
+		// Розставляємо кораблі
+		function createShipsPlace(rowIndex, columnIndex, shipsQuantity) {
+			let fieldArr = generateField(rowIndex, columnIndex)
+			for (let i = 0; i < shipsQuantity;) {
+				let randomPosittionInRow = Math.floor(Math.random() * 6)
+				let randomPosittionInColumn = Math.floor(Math.random() * 6)
+				if (fieldArr[randomPosittionInRow][randomPosittionInColumn] !== 1) {
+					fieldArr[randomPosittionInRow][randomPosittionInColumn] = 1
+					i++
+				}
+			}
+			return fieldArr
+		}
+		
+		let playFieldWithShips = createShipsPlace(rowIndex, columnIndex, shipsQuantity)
+		// Граємо
+		function game(createShipsPlace, shipsQuantity, userChoiseShots) {
+			let result
+			while (shipsQuantity > 0 && userChoiseShots > 0) {
+				let userChoiseRow = parseInt(prompt('Введіть координати корабля по осі X: ')) - 1
+				let userChoiseColumn = parseInt(prompt('Введіть координати корабля по осі Y: ')) - 1
+				userChoiseShots--
+				if (playFieldWithShips[userChoiseRow][userChoiseColumn] === 1) {
+					shipsQuantity--
+					alert('Ви влучили!!')
+				} else (alert(`Ви не влучили, залишилось ${userChoiseShots} пострілів`))
+			}
+			if (shipsQuantity === 0) result = alert('Ви перемогли!')
+			else result = alert('Ви програли!')
+			return result
+		}
+		console.log(playFieldWithShips);
+		game(createShipsPlace, shipsQuantity, userChoiseShots)
+		//========================================================================================================================================================
+	</script>
+
+</body>
+
+</html>
