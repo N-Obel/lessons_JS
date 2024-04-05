@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.</p>
+	<script>
+		//========================================================================================================================================================
+		let namesList = ['Nik', 'Nina', 'Hordiy', 'John', 'Halyna', 'Olga', 'Olena', 'James', 'Stefan', 'Anna']
+		const searchNameLength = 5
+		console.log(namesList);
+		document.write(`Не відсортований масив = <br> ${namesList}<br>`)
+		//========================================================================================================================================================
+		for (let k = 1; k < namesList.length; k++) {
+			let currentName = namesList[k]
+			let i = k - 1
+			while (i >= 0 && namesList[i] > currentName) {
+				namesList[i + 1] = namesList[i]
+				i--
+			}
+			namesList[i + 1] = currentName
+		}
+		//========================================================================================================================================================
+		document.write(`=================================================================<br>`)
+		document.write(`Відсортований масив = <br>${namesList}<br>`)
+		document.write(`=================================================================<br>`)
+		document.write(`Ім’я, довжиною ${searchNameLength} знаходиться в масиві під номером ${binarySearch(namesList, searchNameLength)}`)
+		//========================================================================================================================================================
+		function binarySearch(namesList, searchNameLength) {
+			let start = 0;
+			let end = namesList.length - 1;
+			while (start <= end) {
+				const middle = Math.floor((start + end) / 2);
+				if (namesList[middle].length === searchNameLength) return middle;
+				if (namesList[middle].length < searchNameLength) start = middle + 1;
+				if (namesList[middle].length > searchNameLength) end = middle - 1;
+			}
+			return -1;
+		}
+		//========================================================================================================================================================
+	</script>
+</body>
+
+</html>

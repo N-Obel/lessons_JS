@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.</p>
+	<script>
+		//========================================================================================================================================================
+		const minNum = -20
+		const maxNum = 30
+
+		function getRandomNum(minNum, maxNum, arrElemQuantity = 30) {
+			let arr = []
+			for (let i = 0; i < arrElemQuantity; i++) {
+				let randomArrValue = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+				arr.push(randomArrValue)
+			}
+			return arr
+		}
+
+		let numArr = getRandomNum(minNum, maxNum, arrElemQuantity = 30)
+		document.write(`Не відсортований масив = <br> ${numArr}<br>`)
+		//========================================================================================================================================================
+		let changeCount = 0
+		let comparisonCount = 0
+		//========================================================================================================================================================
+
+		for (let k = 1; k < numArr.length; k++) {
+			let currentNum = numArr[k]
+			let i = k - 1
+			while (i >= 0 && numArr[i] > currentNum) {
+				numArr[i + 1] = numArr[i]
+				i--
+				changeCount++
+			}
+			numArr[i + 1] = currentNum
+			comparisonCount++
+		}
+		//========================================================================================================================================================
+		document.write(`=================================================================<br>`)
+		document.write(`Відсортований масив = <br>${numArr}<br>`)
+		document.write(`=================================================================<br>`)
+		document.write(`Кількість обмінів = ${changeCount}<br> Кількість порівнянь = ${comparisonCount}`)
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>

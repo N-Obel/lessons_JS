@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.</p>
+	<script>
+		//========================================================================================================================================================
+		let numArrBuble = [3, 5, 1, 4, 2]
+		let numArrMix = [3, 5, 1, 4, 2]
+		let numArrInclusion = [3, 5, 1, 4, 2]
+		document.write(`Початковий масив = [ ${numArrBuble} ]<br>`)
+		//========================================================================================================================================================
+		let changed
+		let changeCount = 0
+		let comparisonCount = 0
+		//========================================================================================================================================================
+		// Сортування бульбашкою
+		//========================================================================================================================================================
+		document.write(`==============================<br>`)
+		document.write(`Сортування бульбашкою : <br>`)
+		do {
+			changed = false
+			for (let i = 1; i < numArrBuble.length; i++) {
+				if (numArrBuble[i - 1] > numArrBuble[i]) {
+					let temp = numArrBuble[i - 1]
+					numArrBuble[i - 1] = numArrBuble[i]
+					numArrBuble[i] = temp
+					changed = true
+					document.write(`[ ${numArrBuble} ]<br>`);
+				}
+			}
+		} while (changed)
+		//========================================================================================================================================================
+		// Сортування змішуванням
+		//========================================================================================================================================================
+		document.write(`==============================<br>`)
+		document.write(`Сортування змішуванням : <br>`)
+		let leftIndex = 0
+		let rightIndex = numArrMix.length - 1
+		while (leftIndex < rightIndex) {
+			changed = false
+			for (let i = leftIndex + 1; i <= rightIndex; i++) {
+				if (numArrMix[i - 1] > numArrMix[i]) {
+					let temp = numArrMix[i - 1]
+					numArrMix[i - 1] = numArrMix[i]
+					numArrMix[i] = temp
+					changed = true
+					document.write(`[ ${numArrMix} ]<br>`);
+				}
+			}
+			rightIndex--
+			if (changed === false) break
+			changed = false
+			for (let i = rightIndex; i > leftIndex; i--) {
+				if (numArrMix[i - 1] > numArrMix[i]) {
+					let temp = numArrMix[i - 1]
+					numArrMix[i - 1] = numArrMix[i]
+					numArrMix[i] = temp
+					changed = true
+					document.write(`[ ${numArrMix} ]<br>`);
+				}
+			}
+			leftIndex++
+			if (changed === false) break
+		}
+		//========================================================================================================================================================
+		// Сортування включенням
+		//========================================================================================================================================================
+		document.write(`==============================<br>`)
+		document.write(`Сортування включенням : <br>`)
+
+		for (let k = 1; k < numArrInclusion.length; k++) { 
+			let currentNum = numArrInclusion[k]
+			let i = k - 1 
+			while (i >= 0 && numArrInclusion[i] > currentNum) {
+				numArrInclusion[i + 1] = numArrInclusion[i]
+				i--
+				
+			}
+			numArrInclusion[i + 1] = currentNum
+			document.write(`[ ${numArrInclusion} ]<br>`);
+		}
+		document.write(`==============================<br>`)
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>
