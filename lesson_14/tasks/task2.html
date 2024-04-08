@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</p>
+
+	<script>
+		let monthN = parseInt(prompt('Введіть кількість місяців: '))
+		function getNewYearPerMonthN(object, monthN) {
+			let newYear = object.year
+			let newMonth = object.month + monthN
+			while(newMonth > 12) {
+				newMonth -= 12
+				newYear++
+			}
+			return newYear
+		}
+
+		let dateObject = {
+			day: 10,
+			month: 5,
+			year: 2024
+		}
+		document.write(getNewYearPerMonthN(dateObject, monthN))
+
+	</script>
+</body>
+
+</html>
