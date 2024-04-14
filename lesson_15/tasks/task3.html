@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Розробити клас MultChecker для перевірки таблиці множення</p>
+
+
+	<script>
+
+		let checkedNum = 7
+		let guessCount = 0
+		let wrongGuess = 0
+
+		class MultChecker {
+			constructor(checkedNum, guessCount, wrongGuess) {
+				this.checkedNum = checkedNum
+				this.guessCount = guessCount
+				this.wrongGuess = wrongGuess
+			}
+			getSecondRandomNum() {
+				return 1 + Math.floor(Math.random() * 9)
+			}
+			generateExample() {
+				let randomNum = this.getSecondRandomNum()
+				let userAnswer = parseInt(prompt(`Скільки буде ${this.checkedNum} * ${randomNum}`))
+				if (randomNum * this.checkedNum === userAnswer) this.guessCount++
+				else this.wrongGuess++
+			}
+			render(){
+				alert(`Правильних відповідей - ${this.guessCount}, не правильних відповідей - ${this.wrongGuess}`)
+			}
+		}
+
+		let multChecker = new MultChecker(checkedNum, guessCount, wrongGuess)
+		
+		for (let i = 0; i < 3; i++) {
+			multChecker.generateExample()
+		}
+
+		multChecker.render()
+		
+	</script>
+</body>
+
+</html>

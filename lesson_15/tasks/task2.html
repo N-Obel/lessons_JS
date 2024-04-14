@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Створити об’єкт «Авто».</p>
+
+	<script>
+
+		let fuelAddQuantity = parseInt(prompt('Скільки літрів бажаєте заправити?', '20'))
+		let car = {
+			// поля
+			model: 'Mitsubishi',
+			tankSize: 50,
+			availableFuel: 20,
+			sitsQuantity: 5,
+			passengersQuantity: 3,
+			// методи
+			fuelAdd: function (fuelAddQuantity) {
+				let result
+				if (this.availableFuel + fuelAddQuantity <= this.tankSize) result = this.availableFuel += fuelAddQuantity
+				else result = alert('Забагато палива!')
+				return result
+			},
+			passengersIncrease: function () {
+				return this.passengersQuantity + 2
+			},
+			passengersReduce: function () {
+				return this.passengersIncrease() - 4
+			},
+			toString: function () {
+				return `Заправили авто на ${fuelAddQuantity} літрів. Тепер маємо в баку - ${this.fuelAdd(fuelAddQuantity)}л.<br>
+				Зараз в авто знаходиться - ${this.passengersQuantity} пасажирів. <br>
+				На зупинці підібрали ще 2 пасажирів, і тепер в авто - ${this.passengersIncrease()}. <br>
+				Біля супермаркету висадили - 4 пасажирів, і в авто залишилось - ${this.passengersReduce()}`
+			}
+		}
+
+		document.write(car)
+	</script>
+</body>
+
+</html>

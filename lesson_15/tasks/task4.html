@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		a {
+			color: green;
+			font-size: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Задача_4</h1>
+	<p>Розробити клас Baner</p>
+	<script>
+
+		let banersArr = [
+			{
+				img: '../img/1.svg',
+				link: 'https://finance.i.ua/'
+			},
+			{
+				img: '../img/2.svg',
+				link: 'https://translate.google.com/'
+			},
+			{
+				img: '../img/3.svg',
+				link: 'https://news.liga.net/ua'
+			},
+			{
+				img: '../img/4.svg',
+				link: 'https://www.google.com.ua/'
+			},
+		]
+
+		class Baner {
+			constructor(banersArr) {
+				this.banersArr = banersArr
+			}
+			getRandomObj() {
+				return Math.floor(Math.random() * this.banersArr.length)
+			}
+			showBaner() {
+				let randomBaner = this.getRandomObj()
+				document.write(`
+				<div>
+					<img src="${this.banersArr[randomBaner].img}" alt="Image"> <br>
+					<a href="${this.banersArr[randomBaner].link}">${this.banersArr[randomBaner].link}</a>
+				</div>
+				`)
+			}
+		}
+
+		let someBaner = new Baner(banersArr)
+		someBaner.showBaner()
+
+	</script>
+
+</body>
+
+</html>
