@@ -46,15 +46,18 @@
 			numbers: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
 			getProd: function (min, max) {
 				return this.numbers.reduce(
-					(prevProd, num) =>
-						num > min && num < max ? prevProd * num : prevProd,
+					(prevProd, num, ind, arr) =>
+						ind > min && ind < max ? prevProd * num : prevProd,
 					1
 				)
 			},
 		}
 
+		document.write(`Власний метод першого об’єкта  - ${obj1.getSum(obj1)}<br>`)
 		document.write(`Call для першого об’єкта метод другого об’єкта  - ${obj2.getProd.call(obj1, 2, 5)}<br>`)
 		document.write(`Apply для першого об’єкта метод другого об’єкта  - ${obj2.getProd.apply(obj1, [2, 5])}<br>`)
+		document.write('=============================================<br>')
+		document.write(`Власний метод другого об’єкта  - ${obj2.getProd(2, 5)}<br>`)
 		document.write(`Call для другого об’єкта метод першого об’єкта  - ${obj1.getSum.call(obj2)}<br>`)
 		document.write(`Apply для другого об’єкта метод першого об’єкта  - ${obj1.getSum.apply(obj2)}<br>`)
 
