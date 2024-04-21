@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+	</p>
+	<script>
+		//========================================================================================================================================================
+		class Bill {
+			//-------------------------------------------------//
+			#value
+			get Value() {
+				return this.#value
+			}
+			set Value(newValue) {
+				if (newValue > 200 || newValue < 5) throw new Error('Некоректний номінал купюри!')
+				this.#value = newValue
+			}
+			//-------------------------------------------------//
+			constructor(billValue, billQuantity) {
+				this.Value = billValue
+				this.quantity = billQuantity
+			}
+			//-------------------------------------------------//
+			get totalValue() {
+				return this.Value * this.quantity
+			}
+			toString() {
+				return `${this.Value} : ${this.quantity}<br>`
+			}
+			valueOf() {
+				return totalValue()
+			}
+		}
+		// let exampl = new Bill(200, 10)
+		// document.write(exampl)
+		// document.write(exampl.totalValue())
+		//========================================================================================================================================================
+		let nominalBillList = [
+			new Bill(200, 10),
+			new Bill(100, 15),
+			new Bill(50, 20),
+			new Bill(20, 15),
+			new Bill(10, 10),
+			new Bill(5, 5),
+		]
+		//========================================================================================================================================================
+
+		class TBankomat {
+			constructor(nominalBillList) {
+				this.billsList = nominalBillList
+			}
+			get MinSum() {
+				let minSum = this.billsList.reduce(
+					(prevEl, el) => el.Value < prevEl && el.quantity > 0 ? el.Value : prevEl,
+					Infinity
+				)
+				return minSum
+			}
+			get MaxSum() {
+				return this.billsList.reduce(
+					(prevEl, el) => prevEl + el.totalValue,
+					0
+				)
+			}
+			//----- метод визначення чи можна видати потрібну суму ---
+			getPossibleNotesList(userMoney) {
+				let possibleNotes = []
+				for (let i = 0; i < this.billsList.length && userMoney > 0; i++) {
+					let bill = this.billsList[i]
+					if (userMoney >= bill.Value && bill.quantity > 0) {
+						let notesNum = Math.floor(userMoney / bill.Value)
+						let notesToGive = Math.min(notesNum, bill.quantity)
+						possibleNotes.push({
+							bill,
+							notesToGive,
+						})
+						userMoney -= notesToGive * bill.Value
+					}
+				}
+				if (userMoney > 0) return false
+				return possibleNotes
+			}
+			//----- метод зняття деякої суми ---
+			getMoney(userMoney) {
+				if (userMoney > this.MaxSum) {
+					document.write('У банкоматі немає такої суми ')
+					return
+				}
+				let possibleNotes = this.getPossibleNotesList(userMoney)
+				console.log(possibleNotes)
+				if (possibleNotes) {
+					for (const { bill, notesToGive } of possibleNotes) {
+						document.write(`${bill.Value} : ${notesToGive}<br>`)
+						bill.quantity -= notesToGive
+					}
+					document.write('Заберіть Ваші гроші!')
+				} else {
+					document.write('Не можна видати таку суму бо немає таких купюр ')
+				}
+			}
+			toString() {
+				return `${this.billsList}<br>`
+			}
+		}
+
+		let atm = new TBankomat(nominalBillList)
+		document.write(`Купюри в банкоматі :<br> ${atm}`)
+		document.write(`Загальна сума - ${atm.MaxSum}грн.`)
+		document.write(`<br>`)
+		document.write(`Мінімально можлива купюра - ${atm.MinSum}грн.`)
+		document.write(`<br>`)
+		document.write(`<br>`)
+		atm.getMoney(550)
+		document.write(`<br>`)
+
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>

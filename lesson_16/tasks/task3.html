@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Об’єкт “Фірма” (використати члени-класи)</p>
+
+	<script>
+		//========================================================================================================================================================
+		// --FoundationDate--
+		//-------------------------------------------------//
+		class FoundationDate {
+			// --- get/set --- //
+			#foundYear
+			get FoundYear() {
+				return this.#foundYear
+			}
+			set FoundYear(newYear) {
+				if (newYear < 0 || newYear > 2024) throw new Error('Некоректно введений рік заснування')
+				this.#foundYear = newYear
+			}
+			// -------------------------------- //
+			#foundMonth
+			get FoundMonth() {
+				return this.#foundMonth
+			}
+			set FoundMonth(newMonth) {
+				if (newMonth < 1 || newMonth > 12) throw new Error('Некоректно введений місяць заснування')
+				this.#foundMonth = newMonth
+			}
+			// -------------------------------- //
+			constructor(foundYear, foundMonth) {
+				this.FoundYear = foundYear
+				this.FoundMonth = foundMonth
+			}
+			// ---------дата заснування---------------- //
+			toString() {
+				return `Дата заснування копманії - ${this.FoundMonth}.${this.FoundYear}<br> Від дати занування пройшло - ${this.yearsFromFoundation()} роки<br><br>`
+			}
+			// ---------пройшло від заснування---------------- //
+			yearsFromFoundation() {
+				const currentDate = new Date()
+				const currentYear = currentDate.getFullYear()
+				const currentMonth = currentDate.getMonth() + 1
+				let years = currentYear - this.FoundYear
+				if (currentMonth < 1) {
+					years--
+				}
+				return years
+			}
+		}
+		//========================================================================================================================================================
+		// --Services--
+		//-------------------------------------------------//
+		class Services {
+			// --- get/set --- //
+			#servicePrice
+			get ServicePrice() {
+				return this.#servicePrice
+			}
+			set ServicePrice(newPrice) {
+				if (newPrice < 0) throw new Error('Некоректно введена вартість послуги')
+				this.#servicePrice = newPrice
+			}
+			// -------------------------------- //
+			constructor(serviceName, servicePrice, deadline) {
+				this.serviceName = serviceName
+				this.ServicePrice = servicePrice
+				this.deadline = deadline
+			}
+			toString(){
+				return `Послуга - ${this.serviceName},<br> Прайс за роботу - ${this.ServicePrice}грн.,<br> Строк виконання (днів) - ${this.deadline}<br><br>`
+			}
+		}
+		//========================================================================================================================================================
+		// --FirmsAddresses--
+		//-------------------------------------------------//
+		class FirmsAddresses {
+			// --- get/set --- //
+			#city
+			get City() {
+				return this.#city
+			}
+			set City(newCity) {
+				if (newCity.length <= 0) throw new Error('Некоректно введена назва міста')
+				this.#city = newCity
+			}
+			// -------------------------------- //
+			constructor(country, city, street, appartment) {
+				this.country = country
+				this.City = city
+				this.street = street
+				this.appartment = appartment
+			}
+			toString(){
+				return `Країна - ${this.country},<br> Місто - ${this.City},<br> Адреса - ${this.street},${this.appartment}<br><br>`
+			}
+		}
+		//========================================================================================================================================================
+		// --Company--
+		//-------------------------------------------------//
+		class Company {
+			constructor(companyName, foundDate, services, firmsAddresses) {
+				this.companyName = companyName
+				this.foundDate = foundDate
+				this.services = services
+				this.firmsAddr = firmsAddresses
+			}
+
+			//-------------методи--------------------//
+			createAllFirmsList(city) {
+				return this.firmsAddr.filter((el) => el.City == city)
+			}
+
+			createServicesList(clientPrice, time) {
+				return this.services.filter(
+					(el) => el.ServicePrice <= clientPrice && el.deadline <= time
+				)
+			}
+			toString() {
+				return `${this.createAllFirmsList('Kyiv')}<br> ${this.createServicesList(1000, 1)}`
+			}
+		}
+		//========================================================================================================================================================
+		let services = [
+			new Services('Прибирання приміщення', 3000, 2),
+			new Services('Антибактеріальна обробка', 5000, 3),
+			new Services('Чистка кондиціонера', 1000, 1),
+			new Services('Видалення грибка', 2000, 1),
+		]
+		let firmsAddresses = [
+			new FirmsAddresses('Ukraine', 'Kyiv', 'Main.str', 1),
+			new FirmsAddresses('Ukraine', 'Kyiv', 'Second.str', 2),
+			new FirmsAddresses('Ukraine', 'Kyiv', 'Third.str', 3),
+			new FirmsAddresses('Ukraine', 'Odesa', 'Sea.str', 1),
+			new FirmsAddresses('Ukraine', 'Odesa', 'Fish.str', 2),
+			new FirmsAddresses('Ukraine', 'Lviv', 'Coffee.str', 1),
+			new FirmsAddresses('Ukraine', 'Lviv', 'Chocolate.str', 2)
+		]
+		//========================================================================================================================================================
+		let companyFoundation = new FoundationDate(2020, 8)
+		let company = new Company('Clean&Clean', companyFoundation, services, firmsAddresses)
+		document.write(companyFoundation)
+		document.write(company)
+		//========================================================================================================================================================
+
+
+	</script>
+</body>
+
+</html>

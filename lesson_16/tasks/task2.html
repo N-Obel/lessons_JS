@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі</p>
+	</p>
+	<script>
+		class TMoney {
+			//-----------------------------//
+			#dollExchRate
+			get DollExchRate() {
+				return this.#dollExchRate
+			}
+			set DollExchRate(newCourse) {
+				if (newCourse < 0) throw new Error('Курс долара нажаль не може бути від’ємним!')
+				this.#dollExchRate = newCourse
+			}
+			//-----------------------------//
+			#moneyQuantity
+			get MoneyQuantity() {
+				return this.#moneyQuantity
+			}
+			set MoneyQuantity(newMoneyQuant) {
+				if (newMoneyQuant < 0) throw new Error('Грошова сума не може бути меншою за 0!')
+				this.#moneyQuantity = newMoneyQuant / this.DollExchRate
+			}
+			//========================================================================================================================================================
+			constructor(exchRate, moneyQuantity) {
+				this.DollExchRate = exchRate
+				this.MoneyQuantity = moneyQuantity
+			}
+			//========================================================================================================================================================
+
+			moneyAdd(addSum) {
+				if (addSum < 0) throw new Error('Неможливо додати від’ємну кількість грошей')
+				return this.MoneyQuantity += addSum / this.DollExchRate
+			}
+			moneyRemove(removeSum) {
+				if (removeSum < 0) throw new Error('Неможливо зняти від’ємну кількість грошей')
+				return this.MoneyQuantity -= removeSum / this.DollExchRate
+			}
+			newDollCourse(moneyIncrease = 100) {
+				let totalMoney = this.MoneyQuantity * this.DollExchRate + moneyIncrease
+				return totalMoney / this.MoneyQuantity
+
+			}
+			toString() {
+				return `$ course - ${this.DollExchRate}, money sum ($)= ${this.MoneyQuantity},  new course - ${this.newDollCourse().toFixed(2)}`
+			}
+
+		}
+
+		let userMoney = new TMoney(38, 38000)
+		
+		document.write(`${userMoney}<br>`)
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>
