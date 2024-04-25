@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Зробити конвертер валют (курси валют – константи у скрипті)</p>
+	<form class="form">
+		<div class="form__item">
+			<label>
+				Сума в гривні
+				<input type="text" id="sumHrn" class="input">
+			</label>
+		</div>
+		<hr>
+		<button type="button" id="btn">Конвертувати</button>
+		<hr>
+		<div class="form__item">
+			<label>
+				Сума в євро
+				<input type="text" id="sumEu" class="input">
+			</label>
+		</div>
+		<div class="form__item">
+			<label>
+				Сума в доларах
+				<input type="text" id="sumDol" class="input">
+			</label>
+		</div>
+	</form>
+	<script>
+
+		function convertMOney() {
+			const euroCourse = 42
+			const dollCourse = 40
+		
+			const sumInHrn = parseFloat(document.getElementById('sumHrn').value)
+
+			let convToEu = sumInHrn / euroCourse
+			document.getElementById('sumEu').value = convToEu.toFixed(2)
+
+			let convToDoll = sumInHrn / dollCourse
+			document.getElementById('sumDol').value = convToDoll.toFixed(2)
+		}
+
+		const actionBtn = document.getElementById('btn')
+		actionBtn.onclick = convertMOney
+
+
+
+	</script>
+</body>
+
+</html>

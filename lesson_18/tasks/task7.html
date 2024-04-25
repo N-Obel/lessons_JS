@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.</p>
+
+	<hr>
+	<p>Оберіть бажаний тип транспорту :</p>
+	<select name="" id="transport">
+		<option value="1000">Car</option>
+		<option value="800">Bus</option>
+		<option value="5000">Plane</option>
+	</select>
+	<p>Оберіть тип харчування :</p>
+	<form class="form--food">
+		<div class="form--food__item">
+			<label for="foodVal1">
+				Сніданок
+				<input type="checkbox" id="foodVal1" name="food" value="50" checked>
+			</label>
+		</div>
+		<div class="form--food__item">
+			<label for="foodVal2">
+				Обід
+				<input type="checkbox" id="foodVal2" name="food" value="100">
+			</label>
+		</div>
+		<div class="form--food__item">
+			<label for="foodVal3">
+				Вечеря
+				<input type="checkbox" id="foodVal3" name="food" value="150">
+			</label>
+		</div>
+	</form>
+	<p>Оберіть одного з трьох гідів :</p>
+	<form class="form--guide">
+		<div class="form--guide__item">
+			<label for="firstGuise">
+				Гид - Іван
+				<input type="radio" id="firstGuise" name="guide" value="200" checked>
+			</label>
+		</div>
+		<div class="form--guide__item">
+			<label for="secondGuide">
+				Гид - Степан
+				<input type="radio" id="secondGuide" name="guide" value="300">
+			</label>
+		</div>
+		<div class="form--guide__item">
+			<label for="thirdGuide">
+				Гид - Тарас
+				<input type="radio" id="thirdGuide" name="guide" value="400">
+			</label>
+		</div>
+	</form>
+	<hr>
+	<button type="button" id="btnTotal">Total Cost</button>
+	<span id="totalCost"></span>
+
+	<script>
+
+		function getTotalPrice() {
+			const typeOfTransport = parseFloat(document.getElementById('transport').value)
+			const foodPricesList = document.querySelectorAll('input[type=checkbox]')
+			let foodSum = 0
+			for (const foodEl of foodPricesList) {
+				if (foodEl.checked) foodSum += parseFloat(foodEl.value);
+			}
+			const guidePricesList = document.querySelectorAll('input[type=radio]')
+			let guideSum = 0
+			for (const guide of guidePricesList) {
+				if (guide.checked) guideSum += parseFloat(guide.value);
+			}
+			document.getElementById('totalCost').innerText = foodSum + guideSum + typeOfTransport + 'грн'
+		}
+
+		window.onload = function () {
+			document.getElementById('btnTotal').onclick = getTotalPrice
+		}
+
+	</script>
+</body>
+
+</html>

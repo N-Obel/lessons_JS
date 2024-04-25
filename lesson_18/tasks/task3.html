@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+
+	<form class="form">
+		<div class="form__item">
+			<label for="userAge">
+				Ваш рік народження :
+				<input type="number" class="input" id="bornYear">
+			</label>
+		</div>
+		<hr>
+		<div class="form__item">
+			<button type="button" class="button">Ваш Вік &gt; &gt;</button>
+			<label for="userAge">
+				<input type="number" class="input" id="userAge">
+			</label>
+		</div>
+
+
+	</form>
+	<script>
+
+		function getUserAge() {
+			const currentYear = 2024
+			const bornYear = parseInt(document.getElementById('bornYear').value)
+			document.getElementById('userAge').value = currentYear - bornYear
+		}
+
+		document.querySelector('.button').onclick = getUserAge
+
+
+	</script>
+</body>
+
+</html>

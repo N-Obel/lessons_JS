@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p>Розробити калькулятор</p>
+	<form class="form">
+		<div class="form__item">
+			<label>
+				First Number
+				<input type="number" id="num1" class="input">
+			</label>
+		</div>
+		<div class="form__item">
+			<label>
+				Second Number
+				<input type="number" id="num2" class="input">
+			</label>
+		</div>
+		<hr>
+		<button type="button" id="btnPlus">Додати</button>
+		<button type="button" id="btnMinus">Відняти</button>
+		<button type="button" id="btnProd">Помножити</button>
+		<button type="button" id="btnDiv">Поділити</button>
+		<hr>
+		<div class="form__item">
+			<label>
+				Result
+				<input type="number" id="result" class="input">
+			</label>
+			<button type="button" id="btnClear">Reset</button>
+		</div>
+	</form>
+
+	<script>
+
+		//========================================================================================================================================================
+
+		function getSum() {
+			const num1 = parseFloat(document.getElementById('num1').value)
+			const num2 = parseFloat(document.getElementById('num2').value)
+			let sum = num1 + num2
+			document.getElementById('result').value = sum
+		}
+
+		document.getElementById('btnPlus').onclick = getSum
+
+		//========================================================================================================================================================
+
+		function getMinus() {
+			const num1 = parseFloat(document.getElementById('num1').value)
+			const num2 = parseFloat(document.getElementById('num2').value)
+			let minus = num1 - num2
+			document.getElementById('result').value = minus
+		}
+
+		document.getElementById('btnMinus').onclick = getMinus
+
+		//========================================================================================================================================================
+
+		function getProd() {
+			const num1 = parseFloat(document.getElementById('num1').value)
+			const num2 = parseFloat(document.getElementById('num2').value)
+			let prod = num1 * num2
+			document.getElementById('result').value = prod
+		}
+
+		document.getElementById('btnProd').onclick = getProd
+
+		//========================================================================================================================================================
+
+		function getDiv() {
+			const num1 = parseFloat(document.getElementById('num1').value)
+			const num2 = parseFloat(document.getElementById('num2').value)
+			let div = num1 / num2
+			document.getElementById('result').value = div
+		}
+
+		document.getElementById('btnDiv').onclick = getDiv
+
+		//========================================================================================================================================================
+		function clear(getSum) {
+			document.getElementById('result').value = ''
+			document.getElementById('num1').value = ''
+			document.getElementById('num2').value = ''
+		}
+
+		document.getElementById('btnClear').onclick = clear
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</p>
+
+	<hr>
+
+	<form class="form">
+		<div class="form__item">
+			<label for="ratingQuan">
+				Rating Quantity
+				<input type="number" id="ratingQuan">
+			</label>
+			<button type="button" id="btnTable">Get table</button>
+			<button type="button" id="btnCheck">Get Average</button>
+			<button type="button" id="btnClear">Reset</button>
+
+		</div>
+	</form>
+	<script>
+
+		function getRatingTable() {
+			const userInput = parseInt(document.getElementById('ratingQuan').value)
+			const columnsQuantity = 2
+			let table = document.createElement('table')
+			for (let i = 0; i < userInput; i++) {
+				let trEl = document.createElement('tr')
+				for (let k = 0; k < columnsQuantity; k++) {
+					let tdEl = document.createElement('td')
+					let inpEl = document.createElement('input')
+					inpEl.setAttribute('type', 'number')
+					inpEl.setAttribute('id', 'inpEl')
+					tdEl.append(inpEl)
+					trEl.append(tdEl)
+				}
+				table.append(trEl)
+			}
+			return document.body.append(table)
+		}
+
+		function getAverage() {
+			let sum = 0
+			const inpElValues = document.querySelectorAll('#inpEl')
+			for (const inpVal of inpElValues) {
+				let ratingVal = parseInt(inpVal.value)
+				sum += ratingVal
+			}
+			let average = sum / inpElValues.length
+			let divEl = document.createElement('div')
+			divEl.innerText = average
+			divEl.style.fontSize = '22px'
+			divEl.style.color = 'red'
+			document.querySelector('table').append(divEl)
+		}
+
+		function clearTable(getRatingTable) {
+			document.querySelector('#ratingQuan').value = ''
+			document.querySelector('table').remove()
+		}
+
+		document.getElementById('btnTable').onclick = getRatingTable
+		document.getElementById('btnCheck').onclick = getAverage
+		document.getElementById('btnClear').onclick = clearTable
+
+	</script>
+</body>
+
+</html>

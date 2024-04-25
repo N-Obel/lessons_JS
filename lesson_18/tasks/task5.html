@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)</p>
+
+	<script>
+
+		function createTable(rows = 3, columns = 4, minRandNum = 1, maxRandNum = 10) {
+			let table = document.createElement('table')
+			for (let i = 0; i < rows; i++) {
+				let trEl = document.createElement('tr')
+				for (let j = 0; j < columns; j++) {
+					let randomNum = minRandNum + Math.floor(Math.random() * (maxRandNum - minRandNum + 1))
+					let tdEl = document.createElement('td')
+					tdEl.innerText = randomNum
+					trEl.append(tdEl)
+				}
+				table.append(trEl)
+			}
+			return document.body.append(table)
+		}
+	
+		createTable()
+
+	</script>
+</body>
+
+</html>

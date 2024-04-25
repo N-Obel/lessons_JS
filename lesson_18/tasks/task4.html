@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)</p>
+	<div id="test"></div>
+	<script>
+
+		const dreamsList = ['House', 'Peace', 'World trip', 'Health', 'Love', 'Money', 'Car', 'Appartment']
+
+		function addThreeWishes(dreamsList, wishesQuantity = 3) {
+			for (let i = 0; i < wishesQuantity; i++) {
+				let randWish = Math.floor(Math.random() * (dreamsList.length))
+				let divEl = document.createElement('div')
+				divEl.innerText = dreamsList[randWish]
+				document.body.append(divEl)
+			}
+		}
+
+		window.onload = function () {
+			addThreeWishes(dreamsList)
+		}
+
+	</script>
+</body>
+
+</html>
