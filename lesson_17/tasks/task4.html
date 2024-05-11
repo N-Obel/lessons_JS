@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>
+		Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми
+	</p>
+	<script>
+
+		class ManufacturerComp {
+			constructor({ compName, compRegNumber }) {
+				this.compName = compName
+				this.compRegNumber = compRegNumber
+			}
+
+			toString() {
+				return `Виробник: ${this.compName}, реєстраційний номер: ${this.compRegNumber}<br>`
+			}
+		}
+
+		class Product {
+			constructor(initData) {
+				this.prodName = initData.prodName
+				this.unit = initData.unit
+				this.prodQuantity = initData.prodQuantity
+				this.prodManufactureBrand = new ManufacturerComp(initData)
+			}
+
+			toString() {
+				return `Товар: ${this.prodName}, одиниця виміру: ${this.unit}, кількість: ${this.prodQuantity}, виробник: ${this.prodManufactureBrand}<br>`
+			}
+		}
+
+
+		class Warehouse {
+			constructor(initData) {
+				Object.assign(this, initData)
+				this.productsList = []
+			}
+
+			addSomeProd(product) {
+				this.productsList.push(product)
+			}
+
+			removeSomeProd(removeProd) {
+				this.productsList = this.productsList.filter((prod) => prod.prodManufactureBrand.compRegNumber !== removeProd)
+			}
+
+			searchProdName(prodName) {
+				return this.productsList.filter((prod) => prod.prodName === prodName)
+			}
+
+			searchCompOfManufacture(compName) {
+				return this.productsList.filter((product) => product.prodManufactureBrand.compName === compName)
+			}
+
+			toString() {
+				return `${this.productsList.map((item) => item.toString())}`
+			}
+
+		}
+
+		class WarehouseManager {
+			constructor(productsList, warehouse) {
+				this.productsList = productsList
+				this.warehouse = warehouse
+			}
+
+			addProdToWarehouse() {
+				for (const prod of this.productsList) {
+					this.warehouse.addSomeProd(prod)
+				}
+			}
+
+			render() {
+				for (const prodKey in this.warehouse) {
+					document.write(this.warehouse[prodKey])
+				}
+			}
+		}
+
+
+		let productsList = [
+			new Product({ prodName: 'Плівка', unit: 'шт.', prodQuantity: 10, compName: 'Plastmodern', compRegNumber: 10203040 }),
+			new Product({ prodName: 'Профіль', unit: 'шт.', prodQuantity: 20, compName: 'Alba', compRegNumber: 11213141 }),
+			new Product({ prodName: 'Сантехніка', unit: 'шт.', prodQuantity: 30, compName: 'Ukrinstal', compRegNumber: 12223242 }),
+			new Product({ prodName: 'Черепиця', unit: 'шт.', prodQuantity: 40, compName: 'Pruszynski', compRegNumber: 13233343 })
+		]
+
+	
+		let warehouseManager = new WarehouseManager(productsList, new Warehouse())
+
+		warehouseManager.addProdToWarehouse()
+		warehouseManager.warehouse.removeSomeProd(12223242)
+		document.write('================== Після відвантаження товару ======================= <br>')
+		warehouseManager.render()
+		document.write('========================================= <br>')
+		document.write('Пошук товару по назві "Плівка": <br>')
+		document.write(warehouseManager.warehouse.searchProdName('Плівка'))
+		document.write('========================================= <br>')
+		document.write('Пошук товару по виробнику "Pruszynski": <br>')
+		document.write(warehouseManager.warehouse.searchCompOfManufacture('Pruszynski'))
+
+	</script>
+</body>
+
+</html>

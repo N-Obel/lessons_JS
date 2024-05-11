@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.</p>
+
+	<script>
+		class Auto {
+
+			static AutoRef
+
+			constructor(driver, carBrand, carNumber) {
+				if(Auto.AutoRef) return Auto.AutoRef
+				this.driver = driver
+				this.carBrand = carBrand
+				this.carNumber = carNumber		
+				Auto.AutoRef = this
+			}
+
+				toString(){
+					return `Водій - ${this.driver}<br>Марка авто - ${this.carBrand}<br>Держ.номер - ${this.carNumber}`
+				}
+			}
+
+		let newCar = new Auto('Ivan', 'Audi', 'AA 0001 AA')
+
+		document.write(newCar)
+		
+	</script>
+</body>
+
+</html>

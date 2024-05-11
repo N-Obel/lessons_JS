@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>
+		Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+	</p>
+	<script>
+		//========================================================================================================================================================
+
+		class BookAuthor {
+			constructor({ authorName, authorBirthDay, aboutAuthor }) {
+				this.authorName = authorName
+				this.authorBirthDay = authorBirthDay
+				this.aboutAuthor = aboutAuthor
+			}
+
+			toString() {
+				return `Автор книги : ${this.authorName},<br>Рік народження автора : ${this.authorBirthDay},<br>Про автора : ${this.aboutAuthor}<br>`
+			}
+		}
+		//========================================================================================================================================================
+
+		class BookPublish {
+			constructor({ publishHouseName, publishHouseRegNum, publishHouseIntrodYear }) {
+				this.publishHouseName = publishHouseName
+				this.publishHouseRegNum = publishHouseRegNum
+				this.publishHouseIntrodYear = publishHouseIntrodYear
+			}
+
+			toString() {
+				return `Видавництво : ${this.publishHouseName},<br>Реєстраційний номер видавництва : ${this.publishHouseRegNum},<br>Рік заснування : ${this.publishHouseIntrodYear}`
+			}
+		}
+		//========================================================================================================================================================
+
+		class BookData {
+			constructor(initData) {
+				this.bookAuthor = new BookAuthor(initData)
+				this.bookTitle = initData.bookTitle
+				this.bookGenre = initData.bookGenre
+				this.bookPublish = new BookPublish(initData)
+			}
+
+			toString() {
+				return `${this.bookAuthor}Назва книги : ${this.bookTitle}<br>Жанр: ${this.bookGenre}<br>${this.bookPublish}`
+			}
+		}
+
+		let someBook = new BookData(
+			{ authorName: 'Olga', authorBirthDay: 1500, aboutAuthor: 'Bla-Bla', bookTitle: 'Hello', bookGenre: 'Спеціальна література', publishHouseName: 'Ranok', publishHouseRegNum: 1201, publishHouseIntrodYear: 2018 }
+		)
+		let someBook1 = new BookData(
+			{ authorName: 'Ivan', authorBirthDay: 1600, aboutAuthor: 'Bla-Bla-Bla', bookTitle: 'Bye', bookGenre: 'Хобі', publishHouseName: 'Svitanok', publishHouseRegNum: 1301, publishHouseIntrodYear: 2019 }
+		)
+		let someBook2 = new BookData(
+			{ authorName: 'Anna', authorBirthDay: 1700, aboutAuthor: 'Bla-Bla-Bla-Bla', bookTitle: 'Nice', bookGenre: 'Домашнє господарство', publishHouseName: 'O`Reilly', publishHouseRegNum: 1401, publishHouseIntrodYear: 2020 }
+		)
+		//========================================================================================================================================================
+
+		class LibrarySections {
+			constructor() {
+			
+				this.sections = {}
+			
+			}
+
+			addSection(sectionName) {
+				this.sections[sectionName] = []
+			}
+
+			addBookToSection(book, sectionName) {
+				if (this.sections[sectionName]) {
+					this.sections[sectionName].push(book)
+				}
+			}
+
+			removeBook(title) {
+				for (const section in this.sections) {
+					let bookInSection = this.sections[section];
+					let removedBook = bookInSection.filter(
+						(book) => book.bookTitle == title
+					)
+					document.write(`${removedBook}`)
+				}
+
+			}
+
+			findBookByTitle(title) {
+				for (const section in this.sections) {
+					let booksInSection = this.sections[section];
+					let foundBook = booksInSection.find(book => book.bookTitle === title);
+					if (foundBook) {
+						document.write(foundBook)
+					}
+				}
+			}
+
+			findBooksByAuthor(authorName) {
+				for (const section in this.sections) {
+					let booksInSection = this.sections[section];
+					let authorBooks = booksInSection.filter(book => book.bookAuthor.authorName === authorName);
+					document.write(`${authorBooks}`)
+				}
+			}
+
+			findBooksByPublishHouseName(publishHouseName) {
+				for (const section in this.sections) {
+					const booksInSection = this.sections[section];
+					const bookPublish = booksInSection.filter(book => book.bookPublish.publishHouseName === publishHouseName);
+					document.write(`${bookPublish}`)
+				}
+			}
+
+			checkBook(title) {
+				for (const section of this.sections) {
+					let bookInSection = this.sections[section]
+					let foundBook = bookInSection.find(
+						(book) => book.bookTitle === title
+					)
+				}
+			}
+			
+		}
+
+		//========================================================================================================================================================
+		
+		let librarySect = new LibrarySections()
+		document.write('<br>')
+
+		document.write('================ Додаємо книги по секціям ===========================<br>')
+		librarySect.addSection("Спеціальна література")
+		librarySect.addSection("Хобі")
+		librarySect.addSection("Домашнє господарство")
+
+		librarySect.addBookToSection(someBook,'Спеціальна література')
+		librarySect.addBookToSection(someBook1, 'Хобі')
+		librarySect.addBookToSection(someBook2, 'Домашнє господарство')
+
+		document.write(someBook)
+		document.write('<br>')
+		document.write('---------------------------------------------------------------------------------------------------<br>')
+		document.write(someBook1)
+		document.write('<br>')
+		document.write('---------------------------------------------------------------------------------------------------<br>')
+		document.write(someBook2)
+		document.write('<br>')
+
+		document.write('================= Шукаємо книгу за назвою =======================<br>')
+		librarySect.findBookByTitle('Hello')
+		document.write('<br>')
+
+		document.write('================= Шукаємо книгу за автором ===========================<br>')
+		librarySect.findBooksByAuthor('Anna')
+		document.write('<br>')
+
+		document.write('================== Шукаємо книгу за видавництвом ============================<br>')
+		librarySect.findBooksByPublishHouseName('Svitanok')
+		document.write('<br>')
+
+		document.write('=============== Видаляємо книгу ============================<br>')
+		librarySect.removeBook('Bye')
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>
