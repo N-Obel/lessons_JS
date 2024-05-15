@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+
+		h3,
+		h4 {
+			margin: 0;
+		}
+
+		.lists {
+			display: flex;
+			gap: 20px;
+		}
+
+		.item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		#general,
+		#selected {
+			border: 2px solid #fff;
+			padding: 10px;
+			width: 300px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<h1>Задача_6</h1>
+	<p>Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.</p>
+
+	<div class="lists">
+		<div id="general"></div>
+		<div id="selected"></div>
+	</div>
+
+
+	<script>
+
+		class Sportsman {
+			constructor(sportsmanName, containerSelector) {
+				this.sportsmanName = sportsmanName
+				this.el = this.render(containerSelector)
+			}
+
+			render(containerSelector) {
+				const divBlock = document.createElement('div')
+				divBlock.className = 'item'
+
+				const sportsmanName = document.createElement('h4')
+				sportsmanName.innerText = this.sportsmanName
+
+				const moveBtn = document.createElement('button')
+				moveBtn.innerText = '⮕'
+				moveBtn.onclick = () => this.moveElement()
+
+				divBlock.append(sportsmanName)
+				divBlock.append(moveBtn)
+				document.getElementById('general').append(divBlock)
+
+				return divBlock
+			}
+
+			moveElement() {
+				const selectedList = document.getElementById('selected')
+				const generalList = document.getElementById('general')
+				const sportsman = this.el
+				const btn = document.querySelector('button')
+				console.log(sportsman);
+				if (sportsman.parentElement.id === 'general') {
+					sportsman.remove()
+					selectedList.append(sportsman)
+				} else {
+					sportsman.remove()
+					generalList.append(sportsman)
+				}
+
+			}
+		}
+
+
+		window.onload = function () {
+			const sportsman = new Sportsman('Lionel Messi', '#general')
+			const sportsman1 = new Sportsman('Cristiano Ronaldo', '#general')
+			const sportsman2 = new Sportsman('Harry Kane', '#general')
+			const sportsman3 = new Sportsman('Phil Foden', '#general')
+			const sportsman4 = new Sportsman('Lautaro Martinez', '#general')
+			const sportsman5 = new Sportsman('Kylian Mbappe', '#general')
+			const sportsman6 = new Sportsman('Neymar Jr', '#general')
+		}
+
+	</script>
+</body>
+
+</html>

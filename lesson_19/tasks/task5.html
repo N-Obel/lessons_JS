@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		div {
+			margin-top: 10px;
+			font-size: 24px;
+		}
+		.clicked {
+			border: 3px solid green;
+		}
+		img {
+			border: 3px solid transparent;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_5</h1>
+	<p>Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)</p>
+
+	<script>
+
+		function createImageList(imgList) {
+			const imgEl = document.createElement('img')
+			imgEl.setAttribute('src', imgList)
+			document.body.append(imgEl)
+		}
+
+		window.onload = function () {
+			for (let i = 0; i < imgList.length; i++) {
+				createImageList(imgList[i])
+			}
+			document.body.addEventListener('click', (e) => {
+				let img = e.target
+				img.classList.toggle('clicked')
+			})
+		}
+
+		let imgList = [
+			'../img/im1.png',
+			'../img/im2.png',
+			'../img/im3.png',
+			'../img/im4.png'
+		]
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		div {
+			margin-top: 10px;
+			font-size: 24px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+	</p>
+
+
+	<button type="button" id="btnClick">Click</button>
+	<script>
+
+		function getRandomValue(min = 1, max = 100) {
+			return 1 + Math.floor(Math.random() * (100))
+		}
+
+		function getRandomLiElements(min = 1, max = 10) {
+			return 1 + Math.floor(Math.random() * (10))
+		}
+
+		function createList() {
+			let olEl = document.createElement('ol')
+			let liElQuantity = getRandomLiElements()
+			for (let i = 0; i < liElQuantity; i++) {
+				let liEl = document.createElement('li')
+				liEl.innerText = getRandomValue()
+				olEl.append(liEl)
+			}
+			document.body.append(olEl)
+		}
+
+		window.onload = function () {
+			for (let i = 0; i < 5; i++) {
+				createList()
+			}
+		}
+		
+		function changeBg() {
+			const allLists = document.getElementsByTagName('ol')
+			for (const list of allLists) {
+				if (list.children.length % 2 == 0) list.style.backgroundColor = 'green'
+				else list.style.backgroundColor = 'red'
+			}
+		}
+
+
+
+		document.getElementById('btnClick').onclick = changeBg
+
+	</script>
+
+</body>
+
+</html>

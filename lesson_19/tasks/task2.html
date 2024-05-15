@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		div {
+			margin-top: 10px;
+			font-size: 24px;
+		}
+
+		label {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+
+		<!-- <form class="form">
+		<div class="form__item">
+			<label for="input">
+				Value-1
+				<input type="number" id="input1">
+			</label>
+		</div>
+		<div class="form__item">
+			<label for="input">
+				Value-2
+				<input type="number" id="input2">
+			</label>
+		</div>
+		<div class="form__item">
+			<label for="input">
+				Value-3
+				<input type="number" id="input3">
+			</label>
+		</div>
+		<div class="form__item">
+			<label for="input">
+				Value-4
+				<input type="number" id="input4">
+			</label>
+		</div>
+		<div class="form__item">
+			<label for="input">
+				Value-5
+				<input type="number" id="input5">
+			</label>
+		</div>
+	</form> -->
+	<div>
+		<label for="input1">
+			Value-1
+			<input type="number" id="input1" value="0">
+		</label>
+		<label for="input2">
+			Value-2
+			<input type="number" id="input2" value="0">
+		</label>
+		<label for="input3">
+			Value-3
+			<input type="number" id="input3" value="0">
+		</label>
+		<label for="input4">
+			Value-4
+			<input type="number" id="input4" value="0">
+		</label>
+		<label for="input5">
+			Value-5
+			<input type="number" id="input5" value="0">
+		</label>
+	</div>
+	<script>
+
+		function changeVal() {
+			const inpEl = this
+			let someInp = inpEl
+			while (someInp.nextElementSibling !== null) {
+				someInp.nextElementSibling.firstElementChild.value = parseInt(someInp.firstElementChild.value) + 1
+				someInp = someInp.nextElementSibling
+			}
+			while (someInp.previousElementSibling !== null) {
+				someInp.previousElementSibling.firstElementChild.value = parseInt(someInp.firstElementChild.value) - 1
+				someInp = someInp.previousElementSibling
+			}
+		}
+
+		let labels = document.querySelectorAll('label')
+		
+		for (const label of labels) {
+			label.onchange = changeVal
+		}
+
+	</script>
+
+</body>
+
+</html>

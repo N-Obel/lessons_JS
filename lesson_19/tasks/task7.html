@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_7</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		div {
+
+			font-size: 24px;
+		}
+
+		/* .snowflake {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+
+		} */
+		/* 
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 70px;
+			height: 70px;
+			pointer-events: none;
+		}
+
+
+		} */
+	</style>
+</head>
+
+<body>
+	<h1>Задача_7</h1>
+	<p>Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає нижньої частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).
+	</p>
+
+
+	<script>
+
+		class Snowflake {
+			constructor(imageList) {
+				this.imageList = imageList
+				this.imagePath = this.randomImageUrl(imageList)
+				this.randSize = this.randomSnowflakeSize()
+				this.topPosition = -100
+				this.leftPosition = this.randomLeftPosition()
+				this.el = this.createImage()
+			}
+
+			randomSnowflakeSize() {
+				return 50 + Math.floor(Math.random() * (50))
+			}
+
+			randomLeftPosition() {
+				return Math.floor(Math.random() * (window.innerWidth + 1))
+			}
+
+			randomImageUrl(imageList) {
+				let rand = Math.floor(Math.random() * (imageList.length))
+				this.imagePath = imageList[rand]
+				return this.imagePath
+			}
+
+			createImage() {
+				const snowflake = document.createElement('div')
+				snowflake.style.position = 'absolute'
+				snowflake.style.top = `${this.topPosition}px`
+				snowflake.style.left = `${this.leftPosition}px`
+				snowflake.style.width = `${this.randSize}px`
+				snowflake.style.height = `${this.randSize}px`
+				snowflake.style.background = `url(${this.imagePath}) center / cover no-repeat`
+				document.body.append(snowflake)
+				return snowflake
+			}
+
+			changeSpeed(value) {
+				let currentPosition = parseFloat(this.el.style.top)
+				currentPosition += value
+				if (currentPosition > window.innerHeight) {
+					currentPosition = this.topPosition
+				}
+				this.el.style.top = currentPosition + 'px'
+			}
+		}
+
+		const imageList = [
+			'../img/ice1.png',
+			'../img/ice2.png',
+			'../img/ice3.png'
+		]
+
+		window.onload = function () {
+			let snowFall = setInterval(
+				() => {
+					let snowflake = new Snowflake(imageList)
+					snowflake.createImage()
+					let valueSpeed = 1 + Math.floor(Math.random() * 4)
+					let animation = setInterval(
+						() =>snowflake.changeSpeed(valueSpeed), 20
+				)
+				}, 400
+			)
+		}
+
+	</script>
+
+
+</body>
+
+</html>
