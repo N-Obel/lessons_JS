@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>onLesson_20</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		#cnt {
+			margin-top: 100px;
+		}
+
+		.userContainer {
+			width: 400px;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+
+		.product__container {
+			border: 2px solid #fff;
+
+			height: 100px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.product__img {
+			height: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="cnt"></div>
+	<script>
+		//========================================================================================================================================================
+		//Задача. -->> «Вільний велосипед». Дано список учасників велосипедного клубу.
+		//               Кожен з учасників може залишити вільний велосипед (тоді кількість вільних велосипедів відображається зверху списку)
+		//                або забрати вільний велосипед (якщо є такий)
+		//========================================================================================================================================================
+
+		// class User {
+		// 	constructor(userName, containerSelector, containerElement) {
+		// 		this.userName = userName
+		// 		this.el = this.render(containerSelector, containerElement)
+		// 	}
+
+		// 	//--->> Створюємо кастомну подію для кнопок (додати/відняти)
+		// 	sendEvent(eventType) {
+		// 		const event = new CustomEvent(eventType, {
+		// 			detail: { user: this.userName },
+		// 			bubbles: true
+		// 		})
+
+		// 		this.el.dispatchEvent(event)
+		// 	}
+
+		// 	//--->> Створюємо нашого Юзера і додаємо на сторінку
+		// 	render(containerSelector, containerElement) {
+
+		// 		//--->> Створюємо контейнер для блоку с Юзером і Кнопками
+		// 		const userContainer = document.createElement('div')
+		// 		userContainer.className = 'userContainer'
+
+		// 		//--->> Створюємо Юзер-нейм
+		// 		const titleDiv = document.createElement('div')
+		// 		titleDiv.innerText = this.userName
+		// 		userContainer.append(titleDiv)
+
+		// 		//--->> Створюємо блок з кнопками
+		// 		const actionsBlock = document.createElement('div')
+
+		// 		//--->> Створюємо кнопки (додати/відняти)
+		// 		const addBtn = document.createElement('button')
+		// 		addBtn.innerText = 'Додати'
+		// 		//---------------------------------//
+		// 		addBtn.onclick = () => this.sendEvent('add')
+		// 		actionsBlock.append(addBtn)
+
+		// 		const removeBtn = document.createElement('button')
+		// 		removeBtn.innerText = 'Забрати'
+		// 		//---------------------------------//
+		// 		removeBtn.onclick = () => this.sendEvent('remove')
+		// 		actionsBlock.append(removeBtn)
+
+		// 		//--->> Додаємо блок з кнопками в загальний блок Юзер
+		// 		userContainer.append(actionsBlock)
+
+		// 		//--->> Додаємо контейнер для блоку с Юзером і Кнопками в containerSelector(по ID - це #cnt, або безпосереньо за посиланням на елемент куди його вставити - containerElement)
+		// 		if (containerElement) containerElement.append(userContainer)
+		// 		else document.querySelector(containerSelector).append(userContainer)
+
+		// 		//--->> Ретурнимо адресу контейнера в якому знаходиться наш Юзер
+		// 		return userContainer
+		// 		console.log(userContainer);
+		// 	}
+		// }
+
+		// class BicycleManager {
+		// 	constructor(usersList, bicycleCount, parentContainerSelector) {
+		// 		this.usersList = usersList
+		// 		this.bicycleCount = bicycleCount
+		// 		this.el = this.render(parentContainerSelector)
+		// 	}
+
+		// 	//--->> Створюємо окремі методи (функції) для генерування елементів, а потім їх додамо в <--render()-->
+		// 	createTitle() {
+		// 		const titleElem = document.createElement('div')
+		// 		titleElem.innerText = 'Вільні велосипеди: '
+
+		// 		this.bicycleNumberSpan = document.createElement('span')
+		// 		this.bicycleNumberSpan.innerText = this.bicycleCount
+
+		// 		titleElem.append(this.bicycleNumberSpan)
+		// 		return titleElem
+		// 	}
+
+		// 	//--->> Окремий метод для зміни числа велосипедів!!
+		// 	updateBicycleCount() {
+		// 		this.bicycleNumberSpan.innerText = this.bicycleCount
+		// 	}
+
+		// 	//--->> Слухаємо події на кнопках (add/remove)
+		// 	onAddBtn() {
+		// 		this.bicycleCount++
+		// 		console.log(this);
+		// 		this.updateBicycleCount()
+		// 	}
+		// 	onRemoveBtn() {
+		// 		if (this.bicycleCount > 0) {
+		// 			this.bicycleCount--
+		// 			this.updateBicycleCount()
+		// 		}
+		// 	}
+
+		// 	//--->> Створюємо список Юзерів і слухаємо події на кнопках
+		// 	createUsersListContainer() {
+		// 		const listContainer = document.createElement('div')
+
+		// 		for (const userName of this.usersList) {
+		// 			new User(userName, null, listContainer)
+		// 		}
+		// 		//--->> Щоб не загубити <--this--> ми або викликаємо ()=> або .bind(this)
+		// 		listContainer.addEventListener('add', this.onAddBtn.bind(this))
+		// 		listContainer.addEventListener('remove', this.onRemoveBtn.bind(this))
+
+		// 		return listContainer
+		// 	}
+
+		// 	//--->> Створюємо розмітку для нашого елемента
+		// 	render(parentContainerSelector) {
+		// 		const addTitleToContainer = document.createElement('div')
+		// 		addTitleToContainer.append(this.createTitle())
+
+		// 		const listHeader = document.createElement('h2')
+		// 		listHeader.innerText = 'Клуб велосипедистів'
+		// 		addTitleToContainer.append(listHeader)
+
+		// 		addTitleToContainer.append(this.createUsersListContainer())
+
+		// 		document.querySelector(parentContainerSelector).append(addTitleToContainer)
+		// 		return parentContainerSelector
+		// 	}
+
+
+
+		// }
+
+		// const users = ['Ivan', 'Olga', 'Sasha', 'Dima', 'Sveta']
+
+		// const manager = new BicycleManager(users, 0, '#cnt')
+
+		//--->> Тестимо
+		// let user = new User('John', '#cnt')
+		// let user1 = new User('Nik', '#cnt')
+		// document.getElementById('cnt').addEventListener('add', (e) => alert('Додаємо'))
+		// document.getElementById('cnt').addEventListener('remove', (e) => alert('Забираємо'))
+
+		//========================================================================================================================================================
+		//Задача. -->> Дано перелік товарів у кошику. При зміні кількості одиниць товару збільшувати загальну
+		//				    вартість. Створити клас Product, що призначений для маніпуляцій товаром та клас ProductManager
+		//					   що оперує з усіма товарами (через подію передавати ідентифікатор товару та операцію, що зроблена
+		//========================================================================================================================================================
+
+		class Product {
+			constructor(productData) {
+				this.productData = productData
+				this.el = this.render()
+			}
+
+			//------------------------------------------------------------------------------------------------------------------//
+			//--->> Створюємо окремо кожен елемент у батьківського --prodContainer-- і потім в render() тільки їх додаємо! <<---
+			//------------------------------------------------------------------------------------------------------------------//
+			createImg() {  //--->> Створюємо зображення і return-имо сам елемент
+				const imgEl = document.createElement('img')
+				imgEl.setAttribute('src', `${this.productData.imageUrl}`)
+				imgEl.className = 'product__img'
+				return imgEl
+			}
+
+			createTitle() { //--->> Створюємо Title і return-имо сам елемент
+				const titleEl = document.createElement('div')
+				titleEl.className = 'product__title'
+				titleEl.innerText = this.productData.title
+				return titleEl
+			}
+
+			//----------------- методи для кнопок +/- ---------------------------------//
+			//--->> Створюємо функцію, яка буде оновлювати наш counter (кількість)
+			updateCounter() {
+				this.countSpan.innerText = this.productData.count
+			}
+
+			//--->> Створюємо функцію, яка буде оновлювати суму замовлень
+			get totalPrice() {
+				return this.productData.price * this.productData.count
+			}
+
+			updateTotalProductPrice() {
+				this.totalPriceSpan.innerText = `${this.totalPrice} грн.`
+			}
+
+			//--->> Створюємо подію, яка буде слухати add/reduce/remove і змінювати 
+			//       загальну суму всіх замволень(внизу списка)
+			sendEvent(eventType) {
+				const event = new CustomEvent(eventType, {
+					detail: { product: this.productData },
+					bubbles: true
+				})
+				this.el.dispatchEvent(event)
+			}
+
+			//--->> Створюємо функції на кнопочки "+"/"-"
+			onAddBtn() {
+				this.productData.count++
+				this.updateCounter()
+				this.updateTotalProductPrice()
+				this.sendEvent('addProd')
+			}
+			onReduceBtn() {
+				if (this.productData.count > 1) {
+					this.productData.count--
+					this.updateCounter()
+					this.updateTotalProductPrice()
+					this.sendEvent('reduceProd')
+				}
+
+			}
+			//------------------------------------------------------------//
+			createCounterBlock() { //--->> Створюємо блок з кнопками і count-ом, а також return-имо сам елемент
+				const countBlock = document.createElement('div')
+				countBlock.className = 'product__actions'
+
+				const reduceBtn = document.createElement('button')
+				reduceBtn.innerText = '-'
+				reduceBtn.onclick = this.onReduceBtn.bind(this)
+				countBlock.append(reduceBtn)
+
+				this.countSpan = document.createElement('span')
+				this.countSpan.innerText = this.productData.count
+				countBlock.append(this.countSpan)
+
+
+				const addBtn = document.createElement('button')
+				addBtn.innerText = '+'
+				addBtn.onclick = this.onAddBtn.bind(this)
+				countBlock.append(addBtn)
+
+				return countBlock
+			}
+
+			createPriceSection() {	//--->> Створюємо блок "До сплати" - "сума грн."
+				const priceEl = document.createElement('div')
+				priceEl.className = 'product__price'
+				priceEl.innerText = 'До сплати:'
+
+				this.totalPriceSpan = document.createElement('span')
+				this.totalPriceSpan.innerText = `${this.totalPrice} грн.`
+				priceEl.append(this.totalPriceSpan)
+
+				return priceEl
+			}
+
+			onDelete() {
+				this.sendEvent('delete')
+			}
+			createRemoveSection() {	//--->> Створюємо кнопку "Видалити товар"
+				const delBtn = document.createElement('button')
+				delBtn.innerText = 'x'
+				delBtn.onclick = this.onDelete.bind(this)
+				// або пишемо так 
+				// btn.addEventListener('click', this.onDelete.bind(this))
+				return delBtn
+			}
+			//------------------------------------------------------------------------------------------------------------------//
+			//--->> Створюємо prod_cont - елемент, в якому буде вся інфа про товар, і return-имо його<<---
+			//------------------------------------------------------------------------------------------------------------------//
+			render() {
+				const prodContainer = document.createElement('div')
+				prodContainer.setAttribute('productId', this.productData.id)
+				prodContainer.className = 'product__container'
+				prodContainer.append(this.createImg())
+				prodContainer.append(this.createTitle())
+				prodContainer.append(this.createCounterBlock())
+				prodContainer.append(this.createPriceSection())
+				prodContainer.append(this.createRemoveSection())
+
+				return prodContainer
+			}
+		}
+
+		//========================================================================================================================================================
+
+		class ProductManager {
+			constructor(productsList, parentCont) {
+				this.productsList = productsList
+				this.el = this.render(parentCont)
+			}
+
+			//----------------- методи для додавання/віднімання товарів в полі "Загалом до сплати" ---------------------------------//
+
+			getTotalPrice() {	//--->> Генеруємо загальеу вартість за всі товари в кошику 
+				return this.productsList.reduce(
+					(prevSum, prod) => prevSum + prod.price * prod.count,
+					0
+				)
+			}
+
+			totalPriceUpdate() { //--->> Оновлюємо данні ціну у спані
+				this.totalPriceSpan.innerText = `${this.getTotalPrice()}грн.`
+			}
+
+			onAddProduct() {	//--->> Оновлюємо загальку вартість
+				this.totalPriceUpdate()
+		
+			}
+			onReduceProduct() {	//--->> Оновлюємо загальку вартість
+				this.totalPriceUpdate()
+			
+			}
+			onDeleteProduct(event) {	//--->> Оновлюємо загальку вартість
+				const productId = event.detail.product.id
+				this.productsList = this.productsList.filter(
+					(prod) => prod.id !== productId
+				)
+	
+				document.querySelector(`[productId="${productId}"]`).remove()
+				this.totalPriceUpdate()
+				
+			}
+
+			//-------------------------------------------------------------------------------------------//
+
+			createProductsSection() {	//--->> Створюємо блок зі списком товарів, і вішаємо на нього слухача!
+				const productsMainBlock = document.createElement('div')
+				for (const prodData of this.productsList) {
+					const product = new Product(prodData)
+					productsMainBlock.append(product.el)
+				
+				}
+
+				productsMainBlock.addEventListener('addProd', this.onAddProduct.bind(this))
+				productsMainBlock.addEventListener('reduceProd', this.onReduceProduct.bind(this))
+				productsMainBlock.addEventListener('delete', this.onDeleteProduct.bind(this))
+
+				return productsMainBlock
+			}
+
+			createTotalPriceSection() {	//--->> Створюємо блок "Загальна вартість"
+				const totalPriceCont = document.createElement('div')
+				totalPriceCont.innerText = 'Загалом до оплати:'
+
+				this.totalPriceSpan = document.createElement('span')
+				this.totalPriceSpan.innerText = `${this.getTotalPrice()}грн.`
+				totalPriceCont.append(this.totalPriceSpan)
+
+				return totalPriceCont
+			}
+
+			render(parentCont) {	//--->> Генеруємо розмітку 		
+				const managerContainer = document.createElement('div')
+
+				managerContainer.append(this.createProductsSection())
+				managerContainer.append(this.createTotalPriceSection())
+
+				document.getElementById('cnt').append(managerContainer)
+
+				return managerContainer
+			}
+		}
+
+
+		const electronics = [
+			{
+				id: 1,
+				title: 'LED-індикатор рівня сигналу/заряду KA2284',
+				imageUrl:
+					'https://content2.rozetka.com.ua/goods/images/big/303013209.jpg',
+				price: 40.5,
+				count: 28,
+			},
+			{
+				id: 2,
+				title: 'USB Led лампа підсвічування клавіатури',
+				imageUrl:
+					'https://content2.rozetka.com.ua/goods/images/big/387707182.jpg',
+				price: 41.0,
+				count: 201,
+			},
+			{
+				id: 3,
+				title: 'Цифровий Терморегулятор W1401',
+				imageUrl:
+					'https://content.rozetka.com.ua/goods/images/big/343621355.jpg',
+				price: 158.9,
+				count: 73,
+			},
+		]
+
+		window.onload = function () {
+			// const pr1 = new Product(electronics[0]) --->>> тестили як працює перший клас Product
+			// document.getElementById('cnt').append(pr1.el)
+			const manager = new ProductManager(electronics, 'cnt')
+		}
+	</script>
+</body>
+
+
+</html>

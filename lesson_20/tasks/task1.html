@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		div {
+
+			font-size: 24px;
+		}
+
+		.explosion {
+			width: 250px;
+			transform: rotate(-90deg);
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+
+	<p>Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
+	</p>
+
+
+
+	<script>
+
+		class Tank {
+			constructor(tankImage, boomImage) {
+				this.topPosition = -120
+				this.leftPosition = this.randomLeftPosition()
+				this.el = this.createTank(tankImage)
+			}
+
+			randomLeftPosition() {
+				return Math.floor(Math.random() * (window.innerWidth + 1))
+			}
+
+			createTank(tankImage) {
+				const tankImg = document.createElement('img')
+				tankImg.setAttribute('src', `${tankImage}`)
+
+				tankImg.style.position = 'absolute'
+				tankImg.style.top = `${this.topPosition}px`
+				tankImg.style.left = `${this.leftPosition}px`
+				tankImg.style.transform = `rotate(-90deg)`
+				tankImg.style.width = `250px`
+				tankImg.style.height = `120px`
+				
+				document.body.append(tankImg)
+
+				return tankImg
+			}
+
+			tankChangeSpeed(value) {
+				let currentPosition = parseFloat(this.el.style.top)
+				currentPosition += value
+				if (currentPosition > window.innerHeight) {
+					currentPosition = this.topPosition
+				}
+				this.el.style.top = currentPosition + 'px'
+			}
+
+			tankDestruction(boomImage) {
+				let tank = this.el
+				tank.addEventListener('click', (e) => {
+					if (e.target.tagName === 'IMG') {
+						e.target.setAttribute('src', `${boomImage}`)
+						setTimeout(
+							() => {
+								e.target.remove()
+							}, 500
+						)
+					}
+				})
+			}
+
+			run(){
+				this.el
+				this.tankDestruction(boomImage)
+			}
+		}
+
+
+		const tankImage = '../img/tank.png'
+		const boomImage = '../img/boom.png'
+
+		window.onload = function () {
+			let tankHunting = setInterval(
+				() => {
+					let tank = new Tank(tankImage, boomImage)
+					tank.run()
+					let valueSpeed = 1 + Math.floor(Math.random() * 3)
+					let animation = setInterval(
+						() => tank.tankChangeSpeed(valueSpeed), 100
+					)
+				}, 2500
+			)
+		}
+	</script>
+</body>
+
+</html>
