@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_2</h1>
+	<p>Задача 2. Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції</p>
+	<ul>
+		<li>Вивести всіх простих клієнтів;</li>
+		<li>Вивести всіх клієнтів GoldenClient;</li>
+		<li>Знайти сумарну кількість грошей на рахунку;</li>
+	</ul>
+
+	<script>
+
+		class Client {
+			constructor(clientId, clientName, clientAccMoney) {
+				this.clientId = clientId
+				this.clientName = clientName
+				this.clientAccMoney = clientAccMoney
+			}
+
+			addMoney(moneyAmount) {
+				this.clientAccMoney += moneyAmount
+			}
+
+			reduceMoney(moneyAmount) {
+				if (moneyAmount > this.clientAccMoney) throw new Error('Сума грошей перевищує баланс картки')
+				this.clientAccMoney -= moneyAmount
+			}
+
+			toString() {
+				return `Client ID №${this.clientId} --> ${this.clientName} : ${this.clientAccMoney}грн.`
+			}
+		}
+
+		let client = new Client(55, 'Olga', 1520)
+		// test.reduceMoney(1000)
+		//	document.write(client)
+		document.write(`<br>`)
+
+		class GoldenClient extends Client {
+			constructor(clientId, clientName, clientAccMoney, creditMoneyLimit, creditMoneyPercentage) {
+				super(clientId, clientName, clientAccMoney)
+				this.creditMoneyLimit = creditMoneyLimit
+				this.creditMoneyPercentage = creditMoneyPercentage
+			}
+
+			reduceMoney(moneyAmount) {
+				if (moneyAmount > this.clientAccMoney) {
+					this.totalMoneyOnAcc = this.clientAccMoney - moneyAmount + this.creditMoneyLimit
+					this.clientAccMoney = 0
+				}
+				else this.clientAccMoney -= moneyAmount
+			}
+
+			getPenaltyValue(moneyAmount) {
+				return moneyAmount * (this.creditMoneyPercentage / 100)
+			}
+
+			toString() {
+				return `${super.toString()}, кредитний ліміт: ${this.creditMoneyLimit}грн., відсоток за використання: ${this.creditMoneyPercentage}%`
+			}
+		}
+
+		let goldenClient = new GoldenClient(111, 'Anna', 1000, 2000, 20)
+		//document.write(goldenClient)
+
+		class Bank {
+			constructor(clientsList) {
+				this.clientsList = clientsList
+			}
+
+			renderRegularClients() {
+				let regularClientsList = this.clientsList.forEach(
+					(client) => {
+						if (!(client instanceof GoldenClient)) {
+							document.write(`Звичайні клієнти :<br>${client}<br>`)
+						}
+					}
+				)
+				return regularClientsList
+			}
+
+			renderGoldenClients() {
+				this.clientsList.forEach(
+					(client) => {
+						if (client instanceof GoldenClient) {
+							document.write(`Клієнти класу Golden :<br>${client}<br>`)
+						}
+					}
+				)
+			}
+
+			calcTotalSum() {
+				return this.clientsList.reduce(
+					(prevSum, client) => prevSum + client.clientAccMoney,
+					0
+				)
+			}
+		}
+
+		let clientsList = [
+			new Client(5, 'Olga', 1120),
+			new Client(10, 'Sara', 1220),
+			new Client(15, 'Kira', 1320),
+			new Client(20, 'Ira', 1420),
+			new GoldenClient(110, 'Anna', 1000, 2000, 5),
+			new GoldenClient(1011, 'John', 2000, 3000, 10),
+			new GoldenClient(1012, 'Steve', 3000, 4000, 15),
+			new GoldenClient(1013, 'Maksim', 4000, 2000, 20)
+		]
+
+		let bank = new Bank(clientsList)
+		bank.renderRegularClients()
+		document.write(`<br>`)
+		bank.renderGoldenClients()
+		document.write(`<br>`)
+		document.write(`Загальна сума на рахунках : ${bank.calcTotalSum()}грн.`)
+	</script>
+</body>
+
+</html>

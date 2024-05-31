@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		img {
+			width: 200px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<h1>Задача_3</h1>
+	<p>Розробити Класи</p>
+	
+		<div id="house"></div>
+		<div id="dog"></div>
+		<div id="bird"></div>
+	
+	<script>
+
+		class Parent {
+			constructor(dataX, dataY, imgPath, interval) {
+				this.dataX = dataX
+				this.dataY = dataY
+				this.imgPath = imgPath
+				this.interval = interval
+				this.el = this.renderImg()
+			}
+
+			renderImg() {
+				const imgEl = document.createElement('img')
+				imgEl.setAttribute('src', this.imgPath)
+				imgEl.style.position = 'absolute'
+				imgEl.style.top = `${this.dataY}px`
+				imgEl.style.left = `${this.dataX}px`
+				// document.body.append(imgEl)
+
+				return imgEl
+			}
+
+			getRandomValue(min = 1, max = 10) {
+				return min + Math.floor(Math.random() * (max - min + 1))
+			}
+		}
+
+		class House extends Parent {
+			constructor(dataX, dataY, imgPath, interval) {
+				super(dataX, dataY, imgPath, interval)
+			}
+
+			zoomImg() {
+				setInterval(
+					() => {
+						this.el.style.transform = `scale(0.${this.getRandomValue()})`
+					}, this.interval
+				)
+			}
+		}
+
+		class Dog extends Parent {
+			constructor(dataX, dataY, imgPath, interval) {
+				super(dataX, dataY, imgPath, interval)
+			}
+
+			randomPositionX() {
+				setInterval(
+					() => {
+						let newDataX = this.dataX + this.getRandomValue(20, 80)
+						this.el.style.left = `${newDataX}px`
+					}, this.interval
+				)
+			}
+		}
+
+		class Bird extends Parent {
+			constructor(dataX, dataY, imgPath, interval) {
+				super(dataX, dataY, imgPath, interval)
+			}
+
+			randomPosition() {
+				setInterval(
+					() => {
+						let newDataX = this.dataX + this.getRandomValue(40, 100)
+						let newDataY = this.dataY + this.getRandomValue(50, 150)
+						this.el.style.left = `${newDataX}px`
+						this.el.style.top = `${newDataY}px`
+					}, this.interval
+				)
+			}
+		}
+
+		let house = new House(100, 100, '../img/house.png', 2000)
+		document.getElementById('house').append(house.el)
+		house.zoomImg()
+
+		let dog = new Dog(100, 300, '../img/dog.png', 2000)
+		document.getElementById('dog').append(dog.el)
+		dog.randomPositionX()
+
+		let bird = new Bird(100, 500, '../img/bird.png', 2000)
+		document.getElementById('bird').append(bird.el)
+		bird.randomPosition()
+
+	</script>
+</body>
+
+</html>

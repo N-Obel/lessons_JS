@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		#form {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			row-gap: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_4</h1>
+	<p>Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.</p>
+
+	<form id="form">
+		<label for="monthInp">Введіть місяць :
+			<input type="text" id="monthInp" name="month">
+		</label>
+		<label for="gradeInp">Введіть оцінку :
+			<input type="text" id="gradeInp" name="grade">
+		</label>
+		<button type="button" id="btn">Визначити</button>
+		<div id="result"></div>
+	</form>
+
+	<script>
+
+		class IsNotNumber extends Error {
+			constructor() {
+				super()
+				this.message = 'Некоректний ввід. Введіть число!'
+				this.name = 'isNotNumber'
+			}
+		}
+
+		class IsInRange extends Error {
+			constructor() {
+				super()
+				this.message = 'Некоректний ввід. Число не входить у діапазон!'
+				this.name = 'isCorrectMonth'
+			}
+		}
+
+		class IsHolidaysTime extends Error {
+			constructor() {
+				super()
+				this.message = 'Це місяць канікул.'
+				this.name = 'IsHolidaysTime'
+			}
+		}
+
+		class IsGoodGrade extends Error {
+			constructor() {
+				super()
+				this.message = 'Оцінка не потребує виправлення'
+				this.name = 'ISGoodGrade'
+			}
+		}
+
+		class IsLastMonth extends Error {
+			constructor() {
+				super()
+				this.message = 'Це останній місяць семестру'
+				this.name = 'IsLastMonth'
+			}
+		}
+
+
+		class GradeCorrecting {
+			constructor() {
+				this.btn = document.getElementById('btn')
+				this.month = document.getElementById('monthInp')
+				this.grade = document.getElementById('gradeInp')
+			}
+
+			check() {
+				this.month = parseInt(monthInp.value);
+				this.grade = parseInt(gradeInp.value);
+				try {
+					if (isNaN(this.month)) throw new IsNotNumber();
+					if (this.month < 1 || this.month > 12) throw new IsInRange();
+					if (this.month > 5 && this.month < 9) throw new IsHolidaysTime();
+					if (isNaN(this.grade)) throw new IsNotNumber();
+					if (this.grade < 1 || this.grade > 100) throw new IsInRange();
+					if (this.grade >= 90) throw new IsGoodGrade();
+					if (this.month === 6 || this.month === 12) throw new IsLastMonth();
+					result.innerText = "Виправлення можливе";
+				} catch (error) {
+					if (error instanceof IsNotNumber) {
+						result.innerText = error.message
+					}
+					if (error instanceof IsInRange) {
+						result.innerText = error.message
+					}
+					if (error instanceof IsHolidaysTime) {
+						result.innerText = error.message
+					}
+					if (error instanceof IsGoodGrade) {
+						result.innerText = error.message
+					}
+					if (error instanceof IsLastMonth) {
+						result.innerText = error.message
+					}
+				}
+			}
+			initialization() {
+				this.btn.onclick = this.check.bind(this);
+			}
+		}
+
+		let app = new GradeCorrecting();
+		app.initialization()
+
+	</script>
+
+</body>
+
+</html>

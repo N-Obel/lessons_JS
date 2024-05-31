@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+	<style>
+		body {
+			background-color: #14171F;
+			color: #cac6c6;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		p {
+			font-size: 20px;
+		}
+
+		li {
+			font-size: 18px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача_1</h1>
+	<p>Створити клас Client</p>
+
+	<script>
+
+		class Client {
+			constructor(clientId, clientName, clientAccMoney) {
+				this.clientId = clientId
+				this.clientName = clientName
+				this.clientAccMoney = clientAccMoney
+			}
+
+			addMoney(moneyAmount) {
+				this.clientAccMoney += moneyAmount
+			}
+
+			reduceMoney(moneyAmount) {
+				if (moneyAmount > this.clientAccMoney) throw new Error('Сума грошей перевищує баланс картки')
+				this.clientAccMoney -= moneyAmount
+			}
+
+			toString() {
+				return `Client ID №${this.clientId} --> ${this.clientName} : ${this.clientAccMoney}грн.`
+			}
+		}
+
+		let test = new Client(55, 'Olga', 1520)
+		// test.reduceMoney(1000)
+		document.write(test)
+		document.write(`<br>`)
+
+		class GoldenClient extends Client {
+			constructor(clientId, clientName, clientAccMoney, creditMoneyLimit, creditMoneyPercentage) {
+				super(clientId, clientName, clientAccMoney)
+				this.creditMoneyLimit = creditMoneyLimit
+				this.creditMoneyPercentage = creditMoneyPercentage
+			}
+
+			reduceMoney(moneyAmount) {
+				if (moneyAmount > this.clientAccMoney) {
+					this.totalMoneyOnAcc = this.clientAccMoney - moneyAmount + this.creditMoneyLimit
+					this.clientAccMoney = 0
+				}
+				else this.clientAccMoney -= moneyAmount
+			}
+
+			getPenaltyValue(moneyAmount) {
+				return moneyAmount * (this.creditMoneyPercentage / 100)
+			}
+
+			toString() {
+				return `${super.toString()}, кредитний ліміт: ${this.creditMoneyLimit}грн., відсоток за використання: ${this.creditMoneyPercentage}%`
+			}
+		}
+
+		let gold = new GoldenClient(111, 'Anna', 1000, 2000, 20)
+		document.write(gold)
+
+
+
+	</script>
+</body>
+
+</html>
